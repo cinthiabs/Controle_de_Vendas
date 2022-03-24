@@ -6,7 +6,7 @@
            padding-top: 40px;
            padding-bottom: 30px;
            margin-bottom: 30px;
-           margin-left:30px;
+           margin-left:40px;
        }
    </style>
     <div class="jumbotron">
