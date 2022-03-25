@@ -52,10 +52,10 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: var(--white-color);
+            background-color: #eeedf2;
             z-index: var(--z-fixed);
-            transition: .5s
-        }
+/*            transition: .5s
+*/        }
 
         .header_toggle {
             color: var(--first-color);
@@ -192,8 +192,6 @@
 
             .l-navbar {
                 left: 0;
-                /*        padding: 1rem 1rem 0 0
-*/
             }
 
             .show {

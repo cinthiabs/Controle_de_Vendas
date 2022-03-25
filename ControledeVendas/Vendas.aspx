@@ -18,9 +18,7 @@
             padding-top: 20px;
             padding-bottom: 20px;
         }
-        .containerTable{
-            background-color:#cccccc:
-        }
+     
     </style>
     <div class="row">
         <h3><%: Title %></h3>
@@ -65,6 +63,7 @@
             </div>
         </form>
         <br />
+
         <table class="table table-hover">
             <thead>
                 <tr>
