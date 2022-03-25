@@ -16,6 +16,9 @@
             padding-top: 20px;
             padding-bottom: 20px;
         }
+        input:disabled{
+            background:white;
+        }
         
     </style>
     <div class="row">
@@ -26,7 +29,7 @@
 
                 <div class="form-group col-md-4">
                     <label for="txtid">ID:</label>
-                    <input type="number" class="form-control" id="txtid" runat="server">
+                    <input type="number" class="form-control" id="txtid" runat="server" disabled="">
                 </div>
 
                 <div class="form-group col-md-4">
@@ -36,9 +39,9 @@
 
                 <br />
                 <div class="form-group col-md-12 combo">
-                    <asp:Button ID="Btn_Consultar" class="btn btn-primary" runat="server" Text="Inserir" />
-                    <asp:Button ID="Btn_Ativar" class="btn btn-success" runat="server" type="submit" Text="Consultar" />
-                    <asp:Button ID="Btn_Excluir" class="btn btn-danger" runat="server" type="submit" Text="Excluir                                                                                  " />
+                    <asp:Button ID="Btn_Consultar" class="btn btn-primary" runat="server" Text="Consultar" OnClick="Btn_Consultar_Click" />
+                    <asp:Button ID="Btn_Inserir" class="btn btn-success" runat="server" type="submit" Text="Inserir" OnClick="Btn_Inserir_Click" />
+                    <asp:Button ID="Btn_Atualizar" class="btn btn-danger" runat="server" type="submit" Text="Atualizar                                                                                  " />
                 </div>
             </div>
         </form>
@@ -53,7 +56,7 @@
             <tbody>
                 <tr>
                     <td id="id" runat="server"></td>
-                    <td id="Produto" runat="server"></td>
+                    <td id="Produtoid" runat="server"></td>
                 </tr>
             </tbody>
         </table>

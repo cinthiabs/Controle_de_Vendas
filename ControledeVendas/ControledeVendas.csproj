@@ -179,6 +179,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Categoria.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -204,6 +205,7 @@
     <Compile Include="Relatorios.aspx.designer.cs">
       <DependentUpon>Relatorios.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Services\DataBaseService.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -235,6 +237,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ScriptsSQL\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
