@@ -51,6 +51,35 @@ namespace ControledeVendas.Services
             }
 
         }
+
+        public static DataTable ConsultaTable()
+        {
+
+            DataTable dtLista = new DataTable();
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+
+                string query = "SELECT * FROM Categoria";
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    return dtLista;
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+              
+
+                }
+            }
+
+        }
+
         public static Categoria InsertCategoria(Categoria categoria)
         {
             using (SqlConnection connection = new SqlConnection(conn))
