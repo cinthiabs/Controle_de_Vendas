@@ -13,6 +13,7 @@ namespace ControledeVendas
     public partial class Categorias : System.Web.UI.Page
     {
         DataTable Data = new DataTable();
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             Categoria cat = new Categoria();
@@ -20,14 +21,13 @@ namespace ControledeVendas
 
             for (var data = 0; data < Data.Rows.Count; data++)
             {
-                
+
                 cat.id = Convert.ToInt32(Data.Rows[data]["id"].ToString());
                 cat.produto = Data.Rows[data]["nome"].ToString();
 
                 id.InnerText = Convert.ToString(cat.id);
                 Produtoid.InnerText = cat.produto;
             }
-
         }
 
         protected void Btn_Consultar_Click(object sender, EventArgs e)
@@ -55,8 +55,6 @@ namespace ControledeVendas
             catch (Exception ex)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Erro " + ex + "')</script>");
-
-
             }
         }
 

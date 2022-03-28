@@ -180,6 +180,8 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Categoria.cs" />
+    <Compile Include="Entidades\Produto.cs" />
+    <Compile Include="Entidades\Vendas.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

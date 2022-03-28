@@ -14,11 +14,6 @@ namespace ControledeVendas.Services
     public class DataBaseService
     {
         private static string conn = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-
-        public DataBaseService()
-        {
-            //this.con = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-        }
         public static  Categoria ConsultaCategoria(Categoria categoria)
         {
             using (SqlConnection connection = new SqlConnection(conn)) 
@@ -74,7 +69,6 @@ namespace ControledeVendas.Services
                 {
                     throw new ArgumentException(e.Message);
               
-
                 }
             }
 

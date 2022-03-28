@@ -46,9 +46,8 @@
             </div>
         </form>
         <br />
-        <table class="table table-hover">
+        <table class="table table-hover" id="tcount">
             <thead>
-
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Produto</th>
