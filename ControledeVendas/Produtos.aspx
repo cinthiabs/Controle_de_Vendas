@@ -48,8 +48,8 @@
 
                 <br />
                 <div class="form-group col-md-12 combo">
-                    <asp:Button ID="Btn_Consultar" class="btn btn-primary" runat="server" Text="Inserir" />
-                    <asp:Button ID="Btn_Ativar" class="btn btn-success" runat="server" type="submit" Text="Consultar" />
+                    <asp:Button ID="Btn_Consultar" class="btn btn-primary" runat="server" Text="Consultar" OnClick="Btn_Consultar_Click" />
+                    <asp:Button ID="Btn_Inserir" class="btn btn-success" runat="server" type="submit" Text="Inserir" OnClick="Btn_Inserir_Click" />
                     <asp:Button ID="Btn_Excluir" class="btn btn-danger" runat="server" type="submit" Text="Excluir                                                                                  " />
                 </div>
             </div>
@@ -58,6 +58,7 @@
         <table class="table table-hover">
             <thead>
                 <tr>
+                                        <th scope="col">ID</th>
                     <th scope="col">Data</th>
                     <th scope="col">Quantidade</th>
                     <th scope="col">Produto</th>
@@ -67,6 +68,7 @@
             </thead>
             <tbody>
                 <tr>
+                    <td id="Id" runat="server"></td>
                     <td id="Data" runat="server"></td>
                     <td id="Quantidade" runat="server"></td>
                     <td id="Produto" runat="server"></td>

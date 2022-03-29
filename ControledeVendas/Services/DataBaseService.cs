@@ -106,6 +106,45 @@ namespace ControledeVendas.Services
             }
         }
 
+        public static Produto ConsultaProduto(Produto produto)
+        {
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                Produto prod = new Produto();
+                var query = @"select * from Produto where produto like '%" + produto.produto + "%'";
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    DataTable dtLista = new DataTable();
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+
+                    if (dtLista.Rows.Count >= 0)
+                    {
+                        prod.id = Convert.ToInt32(dtLista.Rows[0]["id"].ToString());
+                        prod.Data = dtLista.Rows[0]["data"].ToString();
+                        prod.produto = dtLista.Rows[0]["produto"].ToString();
+                        prod.Quant = dtLista.Rows[0]["quant"].ToString();
+                        prod.precoUnt = dtLista.Rows[0]["precoUnt"].ToString();
+                        prod.precoTotal = dtLista.Rows[0]["precoTotal"].ToString();
+
+
+
+                    }
+                    return prod;
+
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+        }
+
 
     }
 }

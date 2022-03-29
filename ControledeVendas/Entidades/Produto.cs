@@ -8,11 +8,11 @@ namespace ControledeVendas.Entidades
     public class Produto
     {
         public int  id { get; set; }
-        public DateTime Data { get; set; }
+        public string Data { get; set; }
         public string produto { get; set; }
         public string Quant { get; set; }
-        public float precoUnt { get; set; }
-        public float precoTotal { get; set; }
+        public string precoUnt { get; set; }
+        public string precoTotal { get; set; }
 
     }
 }

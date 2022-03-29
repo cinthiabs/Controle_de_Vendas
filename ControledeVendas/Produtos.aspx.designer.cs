@@ -69,13 +69,13 @@ namespace ControledeVendas
         protected global::System.Web.UI.WebControls.Button Btn_Consultar;
 
         /// <summary>
-        /// Controle Btn_Ativar.
+        /// Controle Btn_Inserir.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_Ativar;
+        protected global::System.Web.UI.WebControls.Button Btn_Inserir;
 
         /// <summary>
         /// Controle Btn_Excluir.
@@ -85,6 +85,15 @@ namespace ControledeVendas
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Btn_Excluir;
+
+        /// <summary>
+        /// Controle Id.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell Id;
 
         /// <summary>
         /// Controle Data.
