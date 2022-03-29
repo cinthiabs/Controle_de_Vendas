@@ -34,7 +34,6 @@ namespace ControledeVendas
                     var retorno = DataBaseService.ConsultaProduto(prod);
                     if (retorno != null)
                     {
-                       
                         Id.InnerText = Convert.ToString(retorno.id);
                         Data.InnerText = retorno.Data;
                         Produto.InnerText = retorno.produto;
@@ -42,8 +41,6 @@ namespace ControledeVendas
                         PrecoUni.InnerText = retorno.precoUnt;
                         PrecoTotal.InnerText = retorno.precoTotal;
                     }
-
-
 
                 }
             }
@@ -69,6 +66,27 @@ namespace ControledeVendas
                 else if (string.IsNullOrEmpty(txtPrecoUni.Value))
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe o Preço unitário.')</script>");
+                }
+                else
+                {
+                    Produto prod = new Produto();
+                    prod.produto = txtProduto.Value;
+                    prod.Data =    txtData.Value;
+                    prod.Quant = txtQuantidade.Value;
+                    prod.precoUnt = txtPrecoUni.Value;
+                    prod.precoTotal = txtPrecoTotal.Value;
+
+                    var retorno = DataBaseService.InsertProduto(prod);
+                    if (retorno != null)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto cadastrado com sucesso!')</script>");
+                        Id.InnerText = Convert.ToString(retorno.id);
+                        Data.InnerText = retorno.Data;
+                        Produto.InnerText = retorno.produto;
+                        Quantidade.InnerText = retorno.Quant;
+                        PrecoUni.InnerText = retorno.precoUnt;
+                        PrecoTotal.InnerText = retorno.precoTotal;
+                    }
                 }
             }
             catch (Exception ex)

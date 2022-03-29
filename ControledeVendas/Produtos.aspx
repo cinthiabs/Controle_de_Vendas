@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" Title="Produtos"  MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Produtos.aspx.cs" Inherits="ControledeVendas.Produtos" %>
+﻿<%@ Page Language="C#" Title="Produtos" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Produtos.aspx.cs" Inherits="ControledeVendas.Produtos" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-     <style>
+    <style>
         .row {
             padding-top: 40px;
             padding-bottom: 30px;
@@ -34,7 +34,7 @@
 
                 <div class="form-group col-md-4">
                     <label for="txtProduto">Produto:</label>
-                       <input type="text" class="form-control" id="txtProduto" runat="server">
+                    <input type="text" class="form-control" id="txtProduto" runat="server">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="txtPrecoUni">Preço Unitário:</label>
@@ -58,7 +58,7 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                                        <th scope="col">ID</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Data</th>
                     <th scope="col">Quantidade</th>
                     <th scope="col">Produto</th>
