@@ -91,7 +91,7 @@ namespace ControledeVendas
             }
             catch (Exception ex)
             {
-
+                
             }
         }
     }

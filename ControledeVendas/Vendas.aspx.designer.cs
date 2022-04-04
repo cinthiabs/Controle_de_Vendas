@@ -60,13 +60,13 @@ namespace ControledeVendas
         protected global::System.Web.UI.WebControls.Button Btn_Consultar;
 
         /// <summary>
-        /// Controle Btn_Ativar.
+        /// Controle Btn_inserir.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_Ativar;
+        protected global::System.Web.UI.WebControls.Button Btn_inserir;
 
         /// <summary>
         /// Controle Btn_Excluir.

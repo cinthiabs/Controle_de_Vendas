@@ -56,9 +56,9 @@
                 <br />
 
                 <div class="form-group col-md-12 combo">
-                    <asp:Button ID="Btn_Consultar" class="btn btn-primary" runat="server" Text="Inserir" />
-                    <asp:Button ID="Btn_Ativar" class="btn btn-success" runat="server" type="submit" Text="Consultar" />
-                    <asp:Button ID="Btn_Excluir" class="btn btn-danger" runat="server" type="submit" Text="Excluir                                                                                  " />
+                    <asp:Button ID="Btn_Consultar" class="btn btn-primary" runat="server" Text="Consultar" OnClick="Btn_Consultar_Click" />
+                    <asp:Button ID="Btn_inserir" class="btn btn-success" runat="server" type="submit" Text="Inserir" OnClick="Btn_inserir_Click" />
+                    <asp:Button ID="Btn_Excluir" class="btn btn-danger" runat="server" type="submit" Text="Excluir                                                                                  " OnClick="Btn_Excluir_Click" />
                 </div>
             </div>
         </form>

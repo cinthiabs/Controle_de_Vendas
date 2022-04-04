@@ -13,5 +13,20 @@ namespace ControledeVendas
         {
 
         }
+
+        protected void Btn_Consultar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Btn_inserir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Btn_Excluir_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -41,7 +41,7 @@
                 <div class="form-group col-md-12 combo">
                     <asp:Button ID="Btn_Consultar" class="btn btn-primary" runat="server" Text="Consultar" OnClick="Btn_Consultar_Click" />
                     <asp:Button ID="Btn_Inserir" class="btn btn-success" runat="server" type="submit" Text="Inserir" OnClick="Btn_Inserir_Click" />
-                    <asp:Button ID="Btn_Atualizar" class="btn btn-danger" runat="server" type="submit" Text="Atualizar                                                                                  " />
+                    <asp:Button ID="Btn_Atualizar" class="btn btn-danger" runat="server" type="submit" Text="Atualizar" OnClick="Btn_Atualizar_Click" />
                 </div>
             </div>
         </form>
