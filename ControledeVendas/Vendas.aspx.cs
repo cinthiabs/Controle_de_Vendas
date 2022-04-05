@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace ControledeVendas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //this.panelGrid.Visible = false;
+            botao.Visible = false;
         }
 
         protected void Btn_Consultar_Click(object sender, EventArgs e)
@@ -25,6 +27,11 @@ namespace ControledeVendas
         }
 
         protected void Btn_Excluir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
         {
 
         }

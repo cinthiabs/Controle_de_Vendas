@@ -38,23 +38,32 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="txtPrecoUni">Preço Unitário:</label>
-                    <input type="number" class="form-control" id="txtPrecoUni" runat="server">
+                    <input type="text" class="form-control" id="txtPrecoUni" runat="server">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="txtPrecoTotal">Preço Total:</label>
-                    <input type="number" class="form-control" id="txtPrecoTotal" runat="server">
+                    <input type="text" class="form-control" id="txtPrecoTotal" runat="server">
                 </div>
 
                 <br />
                 <div class="form-group col-md-12 combo">
-                    <asp:Button ID="Btn_Consultar" class="btn btn-primary" runat="server" Text="Consultar" OnClick="Btn_Consultar_Click" />
+                    <asp:Button ID="Btn_Atualizar" class="btn btn-primary" runat="server" Text="Atualizar" />
                     <asp:Button ID="Btn_Inserir" class="btn btn-success" runat="server" type="submit" Text="Inserir" OnClick="Btn_Inserir_Click" />
                     <asp:Button ID="Btn_Excluir" class="btn btn-danger" runat="server" type="submit" Text="Excluir" />
                 </div>
             </div>
         </form>
         <br />
+
+          <div class="form-group col-md-12 col-sm-12 col-xs-12">
+            <label for="txtid">Codigo do Produto:</label>
+            <input type="number" class="form-control" id="txtid" runat="server" style="width: 100%">
+            <br />
+            <asp:Button ID="Consultar" class="btn btn-primary" runat="server" Text="Consultar" OnClick="Btn_Consultar_Click" />
+        </div>
+
+
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -64,6 +73,7 @@
                     <th scope="col">Produto</th>
                     <th scope="col">Preço Unitário</th>
                     <th scope="col">Preço Total</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -74,6 +84,9 @@
                     <td id="Produto" runat="server"></td>
                     <td id="PrecoUni" runat="server"></td>
                     <td id="PrecoTotal" runat="server"></td>
+                    <td id="botao" runat="server">
+                        <asp:Button ID="Editar" class="btn btn-primary" runat="server" type="submit" Text="Editar" OnClick="Editar_Click" />
+                    </td>
                 </tr>
             </tbody>
         </table>

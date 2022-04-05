@@ -48,7 +48,7 @@ namespace ControledeVendas
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtPrecoUni;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPrecoUni;
 
         /// <summary>
         /// Controle txtPrecoTotal.
@@ -57,16 +57,16 @@ namespace ControledeVendas
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtPrecoTotal;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPrecoTotal;
 
         /// <summary>
-        /// Controle Btn_Consultar.
+        /// Controle Btn_Atualizar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_Consultar;
+        protected global::System.Web.UI.WebControls.Button Btn_Atualizar;
 
         /// <summary>
         /// Controle Btn_Inserir.
@@ -85,6 +85,24 @@ namespace ControledeVendas
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Btn_Excluir;
+
+        /// <summary>
+        /// Controle txtid.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtid;
+
+        /// <summary>
+        /// Controle Consultar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Consultar;
 
         /// <summary>
         /// Controle Id.
@@ -139,5 +157,23 @@ namespace ControledeVendas
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableCell PrecoTotal;
+
+        /// <summary>
+        /// Controle botao.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell botao;
+
+        /// <summary>
+        /// Controle Editar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Editar;
     }
 }

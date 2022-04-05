@@ -13,7 +13,7 @@ namespace ControledeVendas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            botao.Visible = false;
         }
 
         protected void Btn_Consultar_Click(object sender, EventArgs e)
@@ -21,15 +21,15 @@ namespace ControledeVendas
             try
             {   // campos obrigatorios
                 
-                if(string.IsNullOrEmpty(txtProduto.Value))
+                if(string.IsNullOrEmpty(txtid.Value))
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe o Produto.')</script>");
+                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe codigo do Produto.')</script>");
                 }
                
                 else
                 {
                     Produto prod = new Produto();
-                    prod.produto = txtProduto.Value;
+                    prod.id = Convert.ToInt32(txtid.Value);
                     
                     var retorno = DataBaseService.ConsultaProduto(prod);
                     if (retorno != null)
@@ -40,13 +40,14 @@ namespace ControledeVendas
                         Quantidade.InnerText = retorno.Quant;
                         PrecoUni.InnerText = retorno.precoUnt;
                         PrecoTotal.InnerText = retorno.precoTotal;
+                        botao.Visible = true;
                     }
 
                 }
             }
             catch(Exception ex)
             {
-
+                ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Erro: " + ex + "')</script>");
             }
         }
 
@@ -79,7 +80,7 @@ namespace ControledeVendas
                     var retorno = DataBaseService.InsertProduto(prod);
                     if (retorno != null)
                     {
-                        ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto cadastrado com sucesso!')</script>");
+                        ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto cadastrado com sucesso! ID : "+retorno.id+"')</script>");
                         Id.InnerText = Convert.ToString(retorno.id);
                         Data.InnerText = retorno.Data;
                         Produto.InnerText = retorno.produto;
@@ -91,7 +92,25 @@ namespace ControledeVendas
             }
             catch (Exception ex)
             {
-                
+                ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Erro: " + ex + "')</script>");
+
+            }
+        }
+
+        protected void Editar_Click(object sender, EventArgs e)
+        {
+            Produto prod = new Produto();
+            prod.id = Convert.ToInt32(txtid.Value);
+
+            var retorno = DataBaseService.ConsultaProduto(prod);
+            if (retorno != null)
+            {
+                txtData.Value= retorno.Data;
+                txtProduto.Value = retorno.produto;
+                txtQuantidade.Value = retorno.Quant;
+                txtPrecoUni.Value = Convert.ToString(retorno.precoUnt);
+                txtPrecoTotal.Value = Convert.ToString( retorno.precoTotal);
+               
             }
         }
     }

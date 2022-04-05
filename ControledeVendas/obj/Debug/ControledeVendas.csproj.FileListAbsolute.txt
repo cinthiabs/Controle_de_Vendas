@@ -150,3 +150,5 @@ C:\git\Controle_de_Vendas\ControledeVendas\obj\Debug\ControledeVendas.csproj.Cor
 C:\git\Controle_de_Vendas\ControledeVendas\obj\Debug\ControledeVendas.csproj.CopyComplete
 C:\git\Controle_de_Vendas\ControledeVendas\obj\Debug\ControledeVendas.dll
 C:\git\Controle_de_Vendas\ControledeVendas\obj\Debug\ControledeVendas.pdb
+C:\git\Controle_de_Vendas\ControledeVendas\bin\nunit.framework.dll
+C:\git\Controle_de_Vendas\ControledeVendas\bin\nunit.framework.xml

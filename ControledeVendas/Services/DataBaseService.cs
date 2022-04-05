@@ -111,7 +111,7 @@ namespace ControledeVendas.Services
             using (SqlConnection connection = new SqlConnection(conn))
             {
                 Produto produto = new Produto();
-                var query = @"select * from Produto where produto like '%" + prod.produto + "%'";
+                var query = @"select * from Produto where id = "+ prod.id;
                 connection.Open();
 
                 try

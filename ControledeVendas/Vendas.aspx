@@ -18,7 +18,6 @@
             padding-top: 20px;
             padding-bottom: 20px;
         }
-     
     </style>
     <div class="row">
         <h3><%: Title %></h3>
@@ -56,13 +55,21 @@
                 <br />
 
                 <div class="form-group col-md-12 combo">
-                    <asp:Button ID="Btn_Consultar" class="btn btn-primary" runat="server" Text="Consultar" OnClick="Btn_Consultar_Click" />
+                    <asp:Button ID="Btn_Atualizar" class="btn btn-primary" runat="server" Text="Atualizar" />
                     <asp:Button ID="Btn_inserir" class="btn btn-success" runat="server" type="submit" Text="Inserir" OnClick="Btn_inserir_Click" />
-                    <asp:Button ID="Btn_Excluir" class="btn btn-danger" runat="server" type="submit" Text="Excluir                                                                                  " OnClick="Btn_Excluir_Click" />
+                    <asp:Button ID="Btn_Excluir" class="btn btn-danger" runat="server" type="submit" Text="Excluir" OnClick="Btn_Excluir_Click" />
                 </div>
+
             </div>
+
         </form>
         <br />
+        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+            <label for="txtid">Consultar ID:</label>
+            <input type="number" class="form-control" id="txtid" runat="server" style="width: 100%">
+            <br />
+            <asp:Button ID="Button1" class="btn btn-primary" runat="server" Text="Consultar" OnClick="Btn_Consultar_Click" />
+        </div>
 
         <table class="table table-hover">
             <thead>
@@ -73,6 +80,7 @@
                     <th scope="col">Quantidade</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Pago</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -83,6 +91,9 @@
                     <td id="Cliente" runat="server"></td>
                     <td id="PrecoUni" runat="server"></td>
                     <td id="PrecoTotal" runat="server"></td>
+                    <td id="botao" runat="server">
+                        <asp:Button ID="Button2" class="btn btn-primary" runat="server" type="submit" Text="Editar" OnClick="Button2_Click" />
+                    </td>
                 </tr>
             </tbody>
         </table>
