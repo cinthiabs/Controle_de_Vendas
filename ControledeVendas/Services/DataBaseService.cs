@@ -125,7 +125,7 @@ namespace ControledeVendas.Services
                     if (dtLista.Rows.Count >= 0)
                     {
                         produto.id = Convert.ToInt32(dtLista.Rows[0]["id"].ToString());
-                        produto.Data = dtLista.Rows[0]["data"].ToString();
+                        produto.Data =Convert.ToDateTime(dtLista.Rows[0]["data"].ToString());
                         produto.produto = dtLista.Rows[0]["produto"].ToString();
                         produto.Quant = dtLista.Rows[0]["quant"].ToString();
                         produto.precoUnt = dtLista.Rows[0]["precoUnt"].ToString();
@@ -160,13 +160,49 @@ namespace ControledeVendas.Services
                     if (dtLista.Rows.Count >= 0)
                     {
                         produto.id = Convert.ToInt32(dtLista.Rows[0]["id"].ToString());
-                        produto.Data = dtLista.Rows[0]["data"].ToString();
+                        produto.Data = Convert.ToDateTime(dtLista.Rows[0]["data"].ToString());
                         produto.produto = dtLista.Rows[0]["produto"].ToString();
                         produto.Quant = dtLista.Rows[0]["quant"].ToString();
                         produto.precoUnt = dtLista.Rows[0]["precoUnt"].ToString();
                         produto.precoTotal = dtLista.Rows[0]["precoTotal"].ToString();
 
 
+
+                    }
+                    return produto;
+
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+        }
+        public static Produto AtualizaProduto(Produto prod)
+        {
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                Produto produto = new Produto();
+                var query = @"update Produto set data="+Convert.ToDateTime(prod.Data)+", produto="+prod.produto+", Quant="+prod.Quant+",precoUnt="+prod.precoUnt+",precoTotal="+prod.precoTotal+", Datalteracao="+DateTime.Now+" where id = "+prod.id+"";
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    DataTable dtLista = new DataTable();
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+
+                    if (dtLista.Rows.Count >= 0)
+                    {
+                        produto.id = Convert.ToInt32(dtLista.Rows[0]["id"].ToString());
+                        produto.Data = Convert.ToDateTime(dtLista.Rows[0]["data"].ToString());
+                        produto.produto = dtLista.Rows[0]["produto"].ToString();
+                        produto.Quant = dtLista.Rows[0]["quant"].ToString();
+                        produto.precoUnt = dtLista.Rows[0]["precoUnt"].ToString();
+                        produto.precoTotal = dtLista.Rows[0]["precoTotal"].ToString();
 
                     }
                     return produto;
