@@ -1,6 +1,8 @@
 ﻿using ControledeVendas.Entidades;
 using ControledeVendas.Services;
 using System;
+using System.Globalization;
+using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -54,21 +56,9 @@ namespace ControledeVendas
         protected void Btn_Inserir_Click(object sender, EventArgs e)
         {
             try
-            {    // campos obrigatorios
-
-                if (string.IsNullOrEmpty(txtData.Value))
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe a Data.')</script>");
-                }
-                else if (string.IsNullOrEmpty(txtProduto.Value))
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe o Produto.')</script>");
-                }
-                else if (string.IsNullOrEmpty(txtPrecoUni.Value))
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe o Preço unitário.')</script>");
-                }
-                else
+            {
+                bool valida = ValidaCampos();
+                if (valida == true )
                 {
                     Produto prod = new Produto();
                     prod.produto = txtProduto.Value;
@@ -104,12 +94,9 @@ namespace ControledeVendas
 
             var retorno = DataBaseService.ConsultaProduto(prod);
 
-            var localDateTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            //inputDate.Value = localDateTime;
-
             if (retorno != null)
             {
-                txtData.Value = localDateTime; // Convert.ToDateTime(retorno.Data).ToString("yyyy-MM-dd hh:mm:ss");
+                txtData.Value = Convert.ToDateTime(retorno.Data).ToString("yyyy-MM-dd hh:mm:ss");
                 txtProduto.Value = retorno.produto;
                 txtQuantidade.Value = retorno.Quant;
                 txtPrecoUni.Value = Convert.ToString(retorno.precoUnt);
@@ -117,25 +104,37 @@ namespace ControledeVendas
 
             }
         }
+        public  bool ValidaCampos()
+        {
+            bool retorno = true;
+            if (string.IsNullOrEmpty(txtData.Value))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe a Data.')</script>");
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(txtProduto.Value))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe o Produto.')</script>");
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(txtPrecoUni.Value))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe o Preço unitário.')</script>");
+                retorno = false;
+            }
+            else
+            {
+                retorno = true;
+            }
+            return retorno;
+        }
 
         protected void Btn_Atualizar_Click(object sender, EventArgs e)
         {
             try
             {    // campos obrigatorios
-
-                if (string.IsNullOrEmpty(txtData.Value))
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe a Data.')</script>");
-                }
-                else if (string.IsNullOrEmpty(txtProduto.Value))
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe o Produto.')</script>");
-                }
-                else if (string.IsNullOrEmpty(txtPrecoUni.Value))
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe o Preço unitário.')</script>");
-                }
-                else
+                bool valida = ValidaCampos();
+                if (valida == true)
                 {
                     Produto prod = new Produto();
                     prod.id = Convert.ToInt32(txtid.Value);

@@ -47,9 +47,11 @@
                     <input type="number" class="form-control" id="txtValor" runat="server">
                 </div>
                 <div class="form-group col-md-4">
+                    
                     <label for="txtPago">Pago:</label>
                     <select id="txtPago" class="form-control">
-                        <option selected>Escolher...</option>
+                        <option value="0">Escolher...</option>
+                         <option value=""></option>
                     </select>
                 </div>
                 <br />

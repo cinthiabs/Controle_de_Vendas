@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Dynamic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ControledeVendas.Services
 {
@@ -14,6 +15,8 @@ namespace ControledeVendas.Services
     public class DataBaseService
     {
         private static string conn = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+      
+
         public static  Categoria ConsultaCategoria(Categoria categoria)
         {
             using (SqlConnection connection = new SqlConnection(conn)) 
@@ -73,7 +76,6 @@ namespace ControledeVendas.Services
             }
 
         }
-
         public static Categoria InsertCategoria(Categoria categoria)
         {
             using (SqlConnection connection = new SqlConnection(conn))
@@ -216,6 +218,64 @@ namespace ControledeVendas.Services
             }
         }
 
+        public static Produto ConsultaVenda(Vendas venda)
+        {
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                Vendas pedido = new Vendas();
+                var query = @"select * from Vendas where id = " + venda.id;
+                connection.Open();
 
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    DataTable dtLista = new DataTable();
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+
+                    if (dtLista.Rows.Count >= 0)
+                    {
+                        pedido.id = Convert.ToInt32(dtLista.Rows[0]["id"].ToString());
+                        pedido.Data = Convert.ToDateTime(dtLista.Rows[0]["data"].ToString());
+                        pedido.produto = dtLista.Rows[0]["produto"].ToString();
+                        pedido.Quant = dtLista.Rows[0]["quant"].ToString();
+                        pedido.precoUnt = dtLista.Rows[0]["precoUnt"].ToString();
+                        pedido.precoTotal = dtLista.Rows[0]["precoTotal"].ToString();
+                    }
+                    return pedido;
+
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+        }
+        public void Categoria()
+        {
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                connection.Open();
+
+            
+                var query ="select * from Categoria";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                DataTable dtLista = new DataTable();
+
+                SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                sqlData.Fill(dtLista);
+
+              
+                //SelectList dropdownDepartamento = new SelectList(Categorias, "id", "nome", null);
+                
+
+                //banco.Close();
+            }
+                
+
+        }
     }
 }

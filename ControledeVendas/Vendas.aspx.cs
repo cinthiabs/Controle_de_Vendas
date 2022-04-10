@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ControledeVendas.Entidades;
 
 namespace ControledeVendas
 {
@@ -16,9 +17,39 @@ namespace ControledeVendas
             botao.Visible = false;
         }
 
+        public bool ValidaCampos()
+        {
+            bool retorno = true;
+            if (string.IsNullOrEmpty(txtData.Value))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe a Data.')</script>");
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(txtQuantidade.Value))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe a Quantidade.')</script>");
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(txtValor.Value))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe o Preço unitário.')</script>");
+                retorno = false;
+            }
+            
+            else
+            {
+                retorno = true;
+            }
+            return retorno;
+        }
         protected void Btn_Consultar_Click(object sender, EventArgs e)
         {
-
+            bool valida = ValidaCampos();
+            if (valida == true)
+            {
+                Vendas venda = new Vendas();
+                venda.id = Convert.ToInt32(txtid.Value);
+            }
         }
 
         protected void Btn_inserir_Click(object sender, EventArgs e)
