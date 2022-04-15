@@ -60,21 +60,12 @@ namespace ControledeVendas
         protected global::System.Web.UI.WebControls.Button Btn_Atualizar;
 
         /// <summary>
-        /// Controle id.
+        /// Controle Dados.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableCell id;
-
-        /// <summary>
-        /// Controle Produtoid.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableCell Produtoid;
+        protected global::System.Web.UI.WebControls.Repeater Dados;
     }
 }

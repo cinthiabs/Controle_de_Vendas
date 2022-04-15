@@ -19,15 +19,18 @@ namespace ControledeVendas
             Categoria cat = new Categoria();
             Data = DataBaseService.ConsultaTable();
 
-            for (var data = 0; data < Data.Rows.Count; data++)
-            {
+            //List<Categoria> categorias = new List<Categoria>();
+            //for (var data = 0; data < Data.Rows.Count; data++)
+            //{
 
-                cat.id = Convert.ToInt32(Data.Rows[data]["id"].ToString());
-                cat.produto = Data.Rows[data]["nome"].ToString();
+            //    cat.id = Convert.ToInt32(Data.Rows[data]["id"].ToString());
+            //    cat.produto = Data.Rows[data]["nome"].ToString();
 
-                id.InnerText = Convert.ToString(cat.id);
-                Produtoid.InnerText = cat.produto;
-            }
+            //    categorias.Add(cat);
+
+            //}
+            Dados.DataSource = Data;
+            Dados.DataBind();
         }
 
         protected void Btn_Consultar_Click(object sender, EventArgs e)
@@ -46,8 +49,8 @@ namespace ControledeVendas
                     var retorno = DataBaseService.ConsultaCategoria(cat);
                     if (retorno != null)
                     {
-                        id.InnerText = Convert.ToString(retorno.id);
-                        Produtoid.InnerText = retorno.produto;
+                        Dados.DataSource = retorno;
+                        Dados.DataBind();
                     }
 
                 }
@@ -84,8 +87,8 @@ namespace ControledeVendas
                         {
                             ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Categoria Cadastrada com sucesso!')</script>");
 
-                            id.InnerText = Convert.ToString(insert.id);
-                            Produtoid.InnerText = insert.produto;
+                            Dados.DataSource = insert;
+                            Dados.DataBind();
                         }
                     }
 

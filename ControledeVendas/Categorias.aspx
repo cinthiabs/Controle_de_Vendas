@@ -1,7 +1,9 @@
-﻿<%@ Page Language="C#" Title="Categorias"  MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Categorias.aspx.cs" Inherits="ControledeVendas.Categorias" %>
+﻿<%@ Page Language="C#" Title="Categorias" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Categorias.aspx.cs" Inherits="ControledeVendas.Categorias" %>
+
+
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-     <style>
+    <style>
         .row {
             padding-top: 40px;
             padding-bottom: 30px;
@@ -16,10 +18,10 @@
             padding-top: 20px;
             padding-bottom: 20px;
         }
-        input:disabled{
-            background:white;
+
+        input:disabled {
+            background: white;
         }
-        
     </style>
     <div class="row">
         <h3><%: Title %></h3>
@@ -34,7 +36,7 @@
 
                 <div class="form-group col-md-4">
                     <label for="txtProduto">Produto:</label>
-                       <input type="text" class="form-control" id="txtProduto" runat="server">
+                    <input type="text" class="form-control" id="txtProduto" runat="server">
                 </div>
 
                 <br />
@@ -54,10 +56,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td id="id" runat="server"></td>
-                    <td id="Produtoid" runat="server"></td>
-                </tr>
+
+                <asp:Repeater ID="Dados" runat="server">
+                    <ItemTemplate>
+                        <tr>
+                            <td> <%# Eval("id") %></td>
+                            <td ><%# Eval("nome") %></td>
+                        </tr>
+                    </ItemTemplate>
+                </asp:Repeater>
+
             </tbody>
         </table>
     </div>

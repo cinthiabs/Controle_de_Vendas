@@ -96,7 +96,7 @@ namespace ControledeVendas
 
             if (retorno != null)
             {
-                txtData.Value = Convert.ToDateTime(retorno.Data).ToString("yyyy-MM-dd hh:mm:ss");
+                txtData.Value = Convert.ToDateTime(retorno.Data).ToString("yyyy-mm-dd hh:mm:ss");
                 txtProduto.Value = retorno.produto;
                 txtQuantidade.Value = retorno.Quant;
                 txtPrecoUni.Value = Convert.ToString(retorno.precoUnt);

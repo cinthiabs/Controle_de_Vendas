@@ -152,3 +152,15 @@ C:\git\Controle_de_Vendas\ControledeVendas\obj\Debug\ControledeVendas.dll
 C:\git\Controle_de_Vendas\ControledeVendas\obj\Debug\ControledeVendas.pdb
 C:\git\Controle_de_Vendas\ControledeVendas\bin\nunit.framework.dll
 C:\git\Controle_de_Vendas\ControledeVendas\bin\nunit.framework.xml
+C:\git\Controle_de_Vendas\ControledeVendas\bin\System.Web.Helpers.dll
+C:\git\Controle_de_Vendas\ControledeVendas\bin\System.Web.Mvc.dll
+C:\git\Controle_de_Vendas\ControledeVendas\bin\System.Web.Razor.dll
+C:\git\Controle_de_Vendas\ControledeVendas\bin\System.Web.WebPages.Deployment.dll
+C:\git\Controle_de_Vendas\ControledeVendas\bin\System.Web.WebPages.dll
+C:\git\Controle_de_Vendas\ControledeVendas\bin\System.Web.WebPages.Razor.dll
+C:\git\Controle_de_Vendas\ControledeVendas\bin\System.Web.Helpers.xml
+C:\git\Controle_de_Vendas\ControledeVendas\bin\System.Web.Mvc.xml
+C:\git\Controle_de_Vendas\ControledeVendas\bin\System.Web.Razor.xml
+C:\git\Controle_de_Vendas\ControledeVendas\bin\System.Web.WebPages.xml
+C:\git\Controle_de_Vendas\ControledeVendas\bin\System.Web.WebPages.Deployment.xml
+C:\git\Controle_de_Vendas\ControledeVendas\bin\System.Web.WebPages.Razor.xml

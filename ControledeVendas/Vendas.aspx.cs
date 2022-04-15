@@ -14,7 +14,7 @@ namespace ControledeVendas
         protected void Page_Load(object sender, EventArgs e)
         {
             //this.panelGrid.Visible = false;
-            botao.Visible = false;
+            //botao.Visible = false;
         }
 
         public bool ValidaCampos()
@@ -47,8 +47,8 @@ namespace ControledeVendas
             bool valida = ValidaCampos();
             if (valida == true)
             {
-                Vendas venda = new Vendas();
-                venda.id = Convert.ToInt32(txtid.Value);
+                Vendas vendas = new Vendas();
+               
             }
         }
 

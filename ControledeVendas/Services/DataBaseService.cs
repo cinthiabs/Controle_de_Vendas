@@ -148,7 +148,7 @@ namespace ControledeVendas.Services
             using (SqlConnection connection = new SqlConnection(conn))
             {
                 Produto produto = new Produto();
-                var query = @"insert into Produto(data, produto, Quant,precoUnt,precoTotal)values('"+ produto.Data+ "','" + prod.produto + "','" + prod.Quant + "'," + prod.precoUnt + "," + prod.precoTotal + ")";
+                var query = @"insert into Produto(data, produto, Quant,precoUnt,precoTotal)values('"+ prod.Data.ToString("yyyy-dd-mm hh:mm:ss") + "','" + prod.produto + "','" + prod.Quant + "'," + prod.precoUnt + "," + prod.precoTotal + ")";
                 connection.Open();
 
                 try
@@ -185,8 +185,13 @@ namespace ControledeVendas.Services
         {
             using (SqlConnection connection = new SqlConnection(conn))
             {
+                var precoTotal = prod.precoTotal;
+                var precoUnt = prod.precoUnt;
+                precoTotal = precoTotal.Replace(',', '.');
+                precoUnt = precoUnt.Replace(',', '.');
+
                 Produto produto = new Produto();
-                var query = @"update Produto set data="+Convert.ToDateTime(prod.Data)+", produto="+prod.produto+", Quant="+prod.Quant+",precoUnt="+prod.precoUnt+",precoTotal="+prod.precoTotal+", Datalteracao="+DateTime.Now+" where id = "+prod.id+"";
+                var query = @"update Produto set data='"+prod.Data.ToString("yyyy-dd-mm") +"', produto='"+prod.produto+"', Quant='"+prod.Quant+"',precoUnt="+precoUnt+",precoTotal="+precoTotal+", DataAlteracao='"+DateTime.Now.ToString("yyyy-dd-mm hh:mm:ss") + "' where id = "+prod.id+"";
                 connection.Open();
 
                 try
@@ -218,41 +223,41 @@ namespace ControledeVendas.Services
             }
         }
 
-        public static Produto ConsultaVenda(Vendas venda)
-        {
-            using (SqlConnection connection = new SqlConnection(conn))
-            {
-                Vendas pedido = new Vendas();
-                var query = @"select * from Vendas where id = " + venda.id;
-                connection.Open();
+        //public static Produto ConsultaVenda(Vendas venda)
+        //{
+        //    using (SqlConnection connection = new SqlConnection(conn))
+        //    {
+        //        Vendas pedido = new Vendas();
+        //        //var query = @"select * from Vendas where id = " + venda.id;
+        //        connection.Open();
 
-                try
-                {
-                    SqlCommand command = new SqlCommand(query, connection);
+        //        try
+        //        {
+        //            //SqlCommand command = new SqlCommand(query, connection);
 
-                    DataTable dtLista = new DataTable();
-                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
-                    sqlData.Fill(dtLista);
+        //            //DataTable dtLista = new DataTable();
+        //            //SqlDataAdapter sqlData = new SqlDataAdapter(command);
+        //            //sqlData.Fill(dtLista);
 
-                    if (dtLista.Rows.Count >= 0)
-                    {
-                        pedido.id = Convert.ToInt32(dtLista.Rows[0]["id"].ToString());
-                        pedido.Data = Convert.ToDateTime(dtLista.Rows[0]["data"].ToString());
-                        pedido.produto = dtLista.Rows[0]["produto"].ToString();
-                        pedido.Quant = dtLista.Rows[0]["quant"].ToString();
-                        pedido.precoUnt = dtLista.Rows[0]["precoUnt"].ToString();
-                        pedido.precoTotal = dtLista.Rows[0]["precoTotal"].ToString();
-                    }
-                    return pedido;
+        //            //if (dtLista.Rows.Count >= 0)
+        //            //{
+        //            //    pedido.id = Convert.ToInt32(dtLista.Rows[0]["id"].ToString());
+        //            //    pedido.Data = Convert.ToDateTime(dtLista.Rows[0]["data"].ToString());
+        //            //    pedido.produto = dtLista.Rows[0]["produto"].ToString();
+        //            //    pedido.Quant = dtLista.Rows[0]["quant"].ToString();
+        //            //    pedido.precoUnt = dtLista.Rows[0]["precoUnt"].ToString();
+        //            //    pedido.precoTotal = dtLista.Rows[0]["precoTotal"].ToString();
+        //            //}
+        //            //return pedido;
 
-                }
-                catch (Exception e)
-                {
-                    throw new ArgumentException(e.Message);
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            throw new ArgumentException(e.Message);
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
         public void Categoria()
         {
             using (SqlConnection connection = new SqlConnection(conn))

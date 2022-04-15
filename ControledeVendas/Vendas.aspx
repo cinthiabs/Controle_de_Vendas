@@ -47,7 +47,11 @@
                     <input type="number" class="form-control" id="txtValor" runat="server">
                 </div>
                 <div class="form-group col-md-4">
-                    
+                    <asp:DropDowList> 
+<%--                        preciso arrumar--%>
+                         <label for="txtPago">Pago:</label>
+                    </asp:DropDowList>
+
                     <label for="txtPago">Pago:</label>
                     <select id="txtPago" class="form-control">
                         <option value="0">Escolher...</option>
@@ -87,15 +91,16 @@
             </thead>
             <tbody>
                 <tr>
-                    <td id="Data" runat="server"></td>
-                    <td id="Quantidade" runat="server"></td>
-                    <td id="Produto" runat="server"></td>
-                    <td id="Cliente" runat="server"></td>
-                    <td id="PrecoUni" runat="server"></td>
-                    <td id="PrecoTotal" runat="server"></td>
-                    <td id="botao" runat="server">
-                        <asp:Button ID="Button2" class="btn btn-primary" runat="server" type="submit" Text="Editar" OnClick="Button2_Click" />
+                   <%-- <td id="<%# Eval("Data") %>" runat="server"></td>
+                    <td id="<%# Eval("Quantidade") %>" runat="server"></td>
+                    <td id="<%# Eval("Produto") %>" runat="server"></td>
+                    <td id="<%# Eval("Cliente") %>" runat="server"></td>
+                    <td id="<%# Eval("PrecoUni") %>" runat="server"></td>
+                    <td id="<%# Eval("PrecoTotal") %>" runat="server"></td>
+                    <td id="<%# Eval("botao") %>" runat="server">--%>
+<%--                        <asp:Button ID="Button2" class="btn btn-primary" runat="server" type="submit" Text="Editar" OnClick="Button2_Click" />--%>
                     </td>
+
                 </tr>
             </tbody>
         </table>
