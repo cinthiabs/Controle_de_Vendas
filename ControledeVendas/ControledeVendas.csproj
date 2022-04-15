@@ -127,7 +127,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Categorias.aspx" />
+    <Content Include="Produto.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -147,7 +147,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Movimentações.aspx" />
-    <Content Include="Produtos.aspx" />
+    <Content Include="Compras.aspx" />
     <Content Include="Relatorios.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -187,12 +187,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Categorias.aspx.cs">
-      <DependentUpon>Categorias.aspx</DependentUpon>
+    <Compile Include="Produto.aspx.cs">
+      <DependentUpon>Produto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Categorias.aspx.designer.cs">
-      <DependentUpon>Categorias.aspx</DependentUpon>
+    <Compile Include="Produto.aspx.designer.cs">
+      <DependentUpon>Produto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -201,8 +201,8 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Entidades\Categoria.cs" />
-    <Compile Include="Entidades\Produto.cs" />
+    <Compile Include="Entidades\Produtos.cs" />
+    <Compile Include="Entidades\Compras.cs" />
     <Compile Include="Entidades\Vendas.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,12 +214,12 @@
     <Compile Include="Movimentações.aspx.designer.cs">
       <DependentUpon>Movimentações.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Produtos.aspx.cs">
-      <DependentUpon>Produtos.aspx</DependentUpon>
+    <Compile Include="Compras.aspx.cs">
+      <DependentUpon>Compras.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Produtos.aspx.designer.cs">
-      <DependentUpon>Produtos.aspx</DependentUpon>
+    <Compile Include="Compras.aspx.designer.cs">
+      <DependentUpon>Compras.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Relatorios.aspx.cs">

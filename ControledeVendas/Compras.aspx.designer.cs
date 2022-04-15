@@ -11,7 +11,7 @@ namespace ControledeVendas
 {
 
 
-    public partial class Produtos
+    public partial class Compras
     {
 
         /// <summary>

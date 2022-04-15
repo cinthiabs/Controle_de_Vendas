@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace ControledeVendas
 {
-    public partial class Produtos : System.Web.UI.Page
+    public partial class Compras : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,10 +30,10 @@ namespace ControledeVendas
 
                 else
                 {
-                    Produto prod = new Produto();
-                    prod.id = Convert.ToInt32(txtid.Value);
+                    Entidades.Compras compra = new Entidades.Compras();
+                    compra.id = Convert.ToInt32(txtid.Value);
 
-                    var retorno = DataBaseService.ConsultaProduto(prod);
+                    var retorno = DataBaseService.ConsultaCompras(compra);
                     if (retorno != null)
                     {
                         Id.InnerText = Convert.ToString(retorno.id);
@@ -60,14 +60,15 @@ namespace ControledeVendas
                 bool valida = ValidaCampos();
                 if (valida == true )
                 {
-                    Produto prod = new Produto();
-                    prod.produto = txtProduto.Value;
-                    prod.Data = Convert.ToDateTime(txtData.Value);
-                    prod.Quant = txtQuantidade.Value;
-                    prod.precoUnt = txtPrecoUni.Value;
-                    prod.precoTotal = txtPrecoTotal.Value;
+                    Entidades.Compras compra = new Entidades.Compras();
 
-                    var retorno = DataBaseService.InsertProduto(prod);
+                    compra.produto = txtProduto.Value;
+                    compra.Data = Convert.ToDateTime(txtData.Value);
+                    compra.Quant = txtQuantidade.Value;
+                    compra.precoUnt = txtPrecoUni.Value;
+                    compra.precoTotal = txtPrecoTotal.Value;
+
+                    var retorno = DataBaseService.InsertCompras(compra);
                     if (retorno != null)
                     {
                         ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto cadastrado com sucesso! ID : " + retorno.id + "')</script>");
@@ -89,10 +90,11 @@ namespace ControledeVendas
 
         protected void Editar_Click(object sender, EventArgs e)
         {
-            Produto prod = new Produto();
-            prod.id = Convert.ToInt32(txtid.Value);
 
-            var retorno = DataBaseService.ConsultaProduto(prod);
+            Entidades.Compras compra = new Entidades.Compras();
+            compra.id = Convert.ToInt32(txtid.Value);
+
+            var retorno = DataBaseService.ConsultaCompras(compra);
 
             if (retorno != null)
             {
@@ -136,16 +138,16 @@ namespace ControledeVendas
                 bool valida = ValidaCampos();
                 if (valida == true)
                 {
-                    Produto prod = new Produto();
-                    prod.id = Convert.ToInt32(txtid.Value);
-                    prod.produto = txtProduto.Value;
-                    prod.Data = Convert.ToDateTime(txtData.Value);
-                    prod.Quant = txtQuantidade.Value;
-                    prod.precoUnt = txtPrecoUni.Value;
-                    prod.precoTotal = txtPrecoTotal.Value;
+                    Entidades.Compras compra = new Entidades.Compras();
+                    compra.id = Convert.ToInt32(txtid.Value);
+                    compra.produto = txtProduto.Value;
+                    compra.Data = Convert.ToDateTime(txtData.Value);
+                    compra.Quant = txtQuantidade.Value;
+                    compra.precoUnt = txtPrecoUni.Value;
+                    compra.precoTotal = txtPrecoTotal.Value;
 
 
-                    var retorno = DataBaseService.AtualizaProduto(prod);
+                    var retorno = DataBaseService.AtualizaCompras(compra);
                     if (retorno != null)
                     {
                         ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto atualizado com sucesso!')</script>");

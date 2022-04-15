@@ -241,9 +241,9 @@
                 <div>
                     <a href="Default.aspx" class="nav_logo"><i class='bx bx-layer nav_logo-icon'></i><span class="nav_logo-name">SIS.VENDAS</span> </a>
                     <div class="nav_list">
-                        <a href="Produtos.aspx" class="nav_link active"><i class='bx bx-grid-alt nav_icon'></i><span class="nav_name">Produtos</span> </a>
+                        <a href="Compras.aspx" class="nav_link active"><i class='bx bx-grid-alt nav_icon'></i><span class="nav_name">Compras</span> </a>
                         <a href="Vendas.aspx" class="nav_link"><i class='bx bx-user nav_icon'></i><span class="nav_name">Vendas</span> </a>
-                        <a href="Categorias.aspx" class="nav_link"><i class='bx bx-message-square-detail nav_icon'></i><span class="nav_name">Categoria</span> </a>
+                        <a href="Produto.aspx" class="nav_link"><i class='bx bx-message-square-detail nav_icon'></i><span class="nav_name">Produto</span> </a>
                         <a href="Relatorios.aspx" class="nav_link"><i class='bx bx-folder nav_icon'></i><span class="nav_name">Relatórios</span> </a>
                         <a href="Movimentações.aspx" class="nav_link"><i class='bx bx-bar-chart-alt-2 nav_icon'></i><span class="nav_name">Movimentações</span>
                         </a>

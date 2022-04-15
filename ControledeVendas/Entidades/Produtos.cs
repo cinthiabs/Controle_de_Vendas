@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ControledeVendas.Entidades
 {
-    public class Categoria
+    public class Produtos
     {
         public int id { get; set; }
         public string produto { get; set; }

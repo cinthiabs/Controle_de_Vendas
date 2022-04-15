@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Title="Categorias" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Categorias.aspx.cs" Inherits="ControledeVendas.Categorias" %>
+﻿<%@ Page Language="C#" Title="Produto" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Produto.aspx.cs" Inherits="ControledeVendas.Produto" %>
 
 
 

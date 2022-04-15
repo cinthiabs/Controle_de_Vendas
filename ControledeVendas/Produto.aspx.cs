@@ -10,7 +10,7 @@ using System.Data;
 
 namespace ControledeVendas
 {
-    public partial class Categorias : System.Web.UI.Page
+    public partial class Produto : System.Web.UI.Page
     {
         DataTable Data = new DataTable();
        
@@ -31,10 +31,10 @@ namespace ControledeVendas
                 }
                 else
                 {
-                    Categoria cat = new Categoria();
-                    cat.produto = txtProduto.Value;
+                    Entidades.Produtos prod = new Entidades.Produtos();
+                    prod.produto = txtProduto.Value;
 
-                    var retorno = DataBaseService.ConsultaCategoria(cat);
+                    var retorno = DataBaseService.ConsultaProduto(prod);
                     if (retorno != null)
                     {
                         Dados.DataSource = retorno;
@@ -59,10 +59,10 @@ namespace ControledeVendas
                 }
                 else
                 {
-                    Categoria cat = new Categoria();
-                    cat.produto = txtProduto.Value;
+                    Entidades.Produtos prod = new Entidades.Produtos();
+                    prod.produto = txtProduto.Value;
 
-                    var retorno = DataBaseService.ConsultaCategoria(cat);
+                    var retorno = DataBaseService.ConsultaProduto(prod);
                     if (retorno.id != 0)
                     {
                         ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto já Cadastrado.')</script>");
@@ -70,7 +70,7 @@ namespace ControledeVendas
                     }
                     else
                     {
-                        var insert = DataBaseService.InsertCategoria(cat);
+                        var insert = DataBaseService.InsertProduto(prod);
                         if (insert != null)
                         {
                             ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Categoria Cadastrada com sucesso!')</script>");
@@ -85,7 +85,6 @@ namespace ControledeVendas
             catch (Exception ex)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Erro " + ex + "')</script>");
-
             }
         }
 

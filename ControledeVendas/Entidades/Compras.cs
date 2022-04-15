@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ControledeVendas.Entidades
 {
-    public class Produto
+    public class Compras
     {
         public int  id { get; set; }
         public DateTime Data { get; set; }

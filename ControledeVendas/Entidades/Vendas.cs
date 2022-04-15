@@ -7,7 +7,6 @@ namespace ControledeVendas.Entidades
 {
     public class Vendas
     {
-
         public int id { get; set; }
         public DateTime Data { get; set; }
         public int produtoid { get; set; }
@@ -16,7 +15,6 @@ namespace ControledeVendas.Entidades
         public string Quant { get; set; }
         public float precoUnt { get; set; }
         public float precoTotal { get; set; }
-
 
     }
 }
