@@ -127,7 +127,7 @@ namespace ControledeVendas.Services
                     if (dtLista.Rows.Count >= 0)
                     {
                         produto.id = Convert.ToInt32(dtLista.Rows[0]["id"].ToString());
-                        produto.Data =Convert.ToDateTime(dtLista.Rows[0]["data"].ToString());
+                        produto.Data =Convert.ToDateTime(dtLista.Rows[0]["data"]);
                         produto.produto = dtLista.Rows[0]["produto"].ToString();
                         produto.Quant = dtLista.Rows[0]["quant"].ToString();
                         produto.precoUnt = dtLista.Rows[0]["precoUnt"].ToString();
@@ -189,9 +189,11 @@ namespace ControledeVendas.Services
                 var precoUnt = prod.precoUnt;
                 precoTotal = precoTotal.Replace(',', '.');
                 precoUnt = precoUnt.Replace(',', '.');
+                string data = prod.Data.ToString("yyyy-dd-MM");
+                string GetData = DateTime.Now.ToString("yyyy-dd-MM");
 
                 Produto produto = new Produto();
-                var query = @"update Produto set data='"+prod.Data.ToString("yyyy-dd-mm") +"', produto='"+prod.produto+"', Quant='"+prod.Quant+"',precoUnt="+precoUnt+",precoTotal="+precoTotal+", DataAlteracao='"+DateTime.Now.ToString("yyyy-dd-mm hh:mm:ss") + "' where id = "+prod.id+"";
+                var query = @"update Produto set data='"+data +"', produto='"+prod.produto+"', Quant='"+prod.Quant+"',precoUnt="+precoUnt+",precoTotal="+precoTotal+", DataAlteracao='"+GetData + "' where id = "+prod.id+"";
                 connection.Open();
 
                 try
@@ -273,11 +275,6 @@ namespace ControledeVendas.Services
                 SqlDataAdapter sqlData = new SqlDataAdapter(command);
                 sqlData.Fill(dtLista);
 
-              
-                //SelectList dropdownDepartamento = new SelectList(Categorias, "id", "nome", null);
-                
-
-                //banco.Close();
             }
                 
 

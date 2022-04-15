@@ -16,19 +16,7 @@ namespace ControledeVendas
        
         protected void Page_Load(object sender, EventArgs e)
         {
-            Categoria cat = new Categoria();
             Data = DataBaseService.ConsultaTable();
-
-            //List<Categoria> categorias = new List<Categoria>();
-            //for (var data = 0; data < Data.Rows.Count; data++)
-            //{
-
-            //    cat.id = Convert.ToInt32(Data.Rows[data]["id"].ToString());
-            //    cat.produto = Data.Rows[data]["nome"].ToString();
-
-            //    categorias.Add(cat);
-
-            //}
             Dados.DataSource = Data;
             Dados.DataBind();
         }

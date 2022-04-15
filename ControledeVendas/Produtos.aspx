@@ -24,7 +24,7 @@
             <div class="containerTable">
                 <div class="form-group col-md-4">
                     <label for="txtData">Data:</label>
-                    <input type="datetime-local" class="form-control"  id="txtData" runat="server">
+                    <input type="date" class="form-control"  id="txtData" runat="server">
                 </div>
 
                 <div class="form-group col-md-4">
