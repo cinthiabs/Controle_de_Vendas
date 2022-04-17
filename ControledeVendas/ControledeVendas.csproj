@@ -127,6 +127,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="InsertProduto.aspx" />
     <Content Include="Produto.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -187,6 +188,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="InsertProduto.aspx.cs">
+      <DependentUpon>InsertProduto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InsertProduto.aspx.designer.cs">
+      <DependentUpon>InsertProduto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Produto.aspx.cs">
       <DependentUpon>Produto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

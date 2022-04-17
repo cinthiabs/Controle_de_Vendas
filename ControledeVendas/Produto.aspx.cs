@@ -13,12 +13,27 @@ namespace ControledeVendas
     public partial class Produto : System.Web.UI.Page
     {
         DataTable Data = new DataTable();
-       
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            Data = DataBaseService.ConsultaTable();
-            Dados.DataSource = Data;
-            Dados.DataBind();
+
+           
+                PanelPrincipal.Visible = true;
+                PanelSegundo.Visible = false;
+                Btn_Atualizar.Visible = false;
+
+                Data = DataBaseService.ConsultaTable();
+                Dados.DataSource = Data;
+                Dados.DataBind();
+                if (txtProduto.Value == "")
+                {
+                    Data = DataBaseService.ConsultaTable();
+                    Dados.DataSource = Data;
+                    Dados.DataBind();
+                }
+           
+
         }
 
         protected void Btn_Consultar_Click(object sender, EventArgs e)
@@ -31,14 +46,12 @@ namespace ControledeVendas
                 }
                 else
                 {
-                    Entidades.Produtos prod = new Entidades.Produtos();
-                    prod.produto = txtProduto.Value;
-
-                    var retorno = DataBaseService.ConsultaProduto(prod);
+                    var retorno = DataBaseService.ConsultaProd(txtProduto.Value);
                     if (retorno != null)
                     {
                         Dados.DataSource = retorno;
                         Dados.DataBind();
+
                     }
 
                 }
@@ -47,10 +60,18 @@ namespace ControledeVendas
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Erro " + ex + "')</script>");
             }
-        }
 
+        }        
+        protected void Btn_Adicionar_Click(object sender, EventArgs e)
+        {
+            PanelPrincipal.Visible = false;
+            PanelSegundo.Visible = true;
+            Btn_Atualizar.Visible = false;
+            Btn_Inserir.Visible = true;
+        }
         protected void Btn_Inserir_Click(object sender, EventArgs e)
         {
+           
             try
             {
                 if (string.IsNullOrEmpty(txtProduto.Value))
@@ -73,13 +94,11 @@ namespace ControledeVendas
                         var insert = DataBaseService.InsertProduto(prod);
                         if (insert != null)
                         {
-                            ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Categoria Cadastrada com sucesso!')</script>");
-
-                            Dados.DataSource = insert;
-                            Dados.DataBind();
+                            ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto Cadastrada com sucesso!')</script>");
+                            PanelPrincipal.Visible = true;
+                            PanelSegundo.Visible = false;
                         }
                     }
-
                 }
             }
             catch (Exception ex)
@@ -88,8 +107,64 @@ namespace ControledeVendas
             }
         }
 
+        protected void Btn_Editar_Click(object sender, EventArgs e)
+        {
+            PanelPrincipal.Visible = false;
+            PanelSegundo.Visible = true;
+            Btn_Atualizar.Visible = true;
+            Btn_Inserir.Visible = false;
+
+
+            Entidades.Produtos prod = new Entidades.Produtos();
+            prod.produto = txtProduto.Value;
+
+            var retorno = DataBaseService.ConsultaProduto(prod);
+
+            if (retorno != null)
+            {
+                txtid.Value = Convert.ToInt32(retorno.id).ToString();
+                inputProduto.Value = retorno.produto;
+              
+
+            }
+
+        }
         protected void Btn_Atualizar_Click(object sender, EventArgs e)
         {
+            Entidades.Produtos prod = new Entidades.Produtos();
+            prod.produto = txtProduto.Value;
+            prod.id = Convert.ToInt32(txtid.Value);
+
+            var retorno = DataBaseService.AtualizarProd(prod);
+            {
+                if (retorno != null)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto Cadastrada com sucesso!')</script>");
+                    PanelPrincipal.Visible = true;
+                    PanelSegundo.Visible = false;
+                    Btn_Atualizar.Visible = false;
+                }
+            }
+
+        }
+
+        protected void Btn_Excluir_Click(object sender, EventArgs e)
+        {
+            Entidades.Produtos prod = new Entidades.Produtos();
+            prod.produto = txtProduto.Value;
+         
+            var retorno = DataBaseService.ConsultaProduto(prod);
+            if(retorno != null)
+            {
+                int id = retorno.id;
+                var retornoExcluir = DataBaseService.ExcluirProduto(id);
+                if(retornoExcluir != null)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto excluido com sucesso!')</script>");
+                    txtProduto.Value = "";
+                }
+
+            }
 
         }
     }

@@ -49,7 +49,58 @@ namespace ControledeVendas.Services
             }
 
         }
+        public static DataTable ExcluirProduto(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                Entidades.Produtos produtos = new Entidades.Produtos();
+                var query = @" delete from Categoria where id =" + id + "";
+                connection.Open();
 
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    DataTable dtLista = new DataTable();
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    
+                    return dtLista;
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+
+        }
+        public static DataTable ConsultaProd(string produto)
+        {
+
+            DataTable dtLista = new DataTable();
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+
+                var query = @" select * from Categoria where Nome ='" + produto + "'";
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    return dtLista;
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+
+        }
         public static DataTable ConsultaTable()
         {
 
@@ -57,7 +108,7 @@ namespace ControledeVendas.Services
             using (SqlConnection connection = new SqlConnection(conn))
             {
 
-                string query = "SELECT * FROM Categoria";
+                string query = "SELECT top 5 * FROM Categoria";
                 connection.Open();
 
                 try
@@ -76,12 +127,49 @@ namespace ControledeVendas.Services
             }
 
         }
+        
+        public static Entidades.Produtos AtualizarProd(Entidades.Produtos prod)
+        {
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                
+                Entidades.Produtos produto = new Entidades.Produtos();
+
+                var query = @"update Produto set produto='" + prod.produto + "' where id="+ prod.id+ "";
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    DataTable dtLista = new DataTable();
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+
+                    if (dtLista.Rows.Count >= 0)
+                    {
+                        produto.id = Convert.ToInt32(dtLista.Rows[0]["id"].ToString());
+                        produto.produto = dtLista.Rows[0]["produto"].ToString();
+
+                    }
+                    return produto;
+
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+
+        }
+
         public static Entidades.Produtos InsertProduto(Entidades.Produtos prod)
         {
             using (SqlConnection connection = new SqlConnection(conn))
             {
                 Entidades.Produtos produtos = new Entidades.Produtos();
-                var query = @" insert into Categoria (nome)values('"+ prod.produto + "')";
+                var query = @"insert into Categoria (nome)values('"+ prod.produto + "')";
                 connection.Open();
 
                 try
@@ -96,8 +184,8 @@ namespace ControledeVendas.Services
 
                     if (list.Tables[0].Rows.Count >= 0)
                     {
-                        produtos.id = Convert.ToInt32(list.Tables[0].Rows[0]["id"].ToString());
-                        produtos.produto = list.Tables[0].Rows[0]["nome"].ToString();
+                        //produtos = list;
+                        return produtos;
                     }
                     return produtos;
 
@@ -145,6 +233,7 @@ namespace ControledeVendas.Services
                 }
             }
         }
+
         public static Entidades.Compras InsertCompras(Entidades.Compras comp)
         {
             using (SqlConnection connection = new SqlConnection(conn))
@@ -170,8 +259,6 @@ namespace ControledeVendas.Services
                         compra.Quant = dtLista.Rows[0]["quant"].ToString();
                         compra.precoUnt = dtLista.Rows[0]["precoUnt"].ToString();
                         compra.precoTotal = dtLista.Rows[0]["precoTotal"].ToString();
-
-
                     }
                     return compra;
 
