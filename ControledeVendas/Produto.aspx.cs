@@ -17,8 +17,6 @@ namespace ControledeVendas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-           
                 PanelPrincipal.Visible = true;
                 PanelSegundo.Visible = false;
                 Btn_Atualizar.Visible = false;
@@ -28,8 +26,6 @@ namespace ControledeVendas
                 {
                   TableConsulta();
                 }
-
-
         }
         public void TableConsulta()
         {
@@ -77,14 +73,14 @@ namespace ControledeVendas
            
             try
             {
-                if (string.IsNullOrEmpty(txtProduto.Value))
+                if (string.IsNullOrEmpty(inputProduto.Value))
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe o Nome.')</script>");
                 }
                 else
                 {
                     Entidades.Produtos prod = new Entidades.Produtos();
-                    prod.produto = txtProduto.Value;
+                    prod.produto = inputProduto.Value;
 
                     var retorno = DataBaseService.ConsultaProduto(prod);
                     if (retorno.id != 0)
@@ -96,7 +92,7 @@ namespace ControledeVendas
                         var insert = DataBaseService.InsertProduto(prod);
                         if (insert == true)
                         {
-                            ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto Cadastrada com sucesso!')</script>");
+                            ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto Cadastrado com sucesso!')</script>");
                             PanelPrincipal.Visible = true;
                             PanelSegundo.Visible = false;
                         }

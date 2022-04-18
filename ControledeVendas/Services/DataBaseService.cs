@@ -173,13 +173,13 @@ namespace ControledeVendas.Services
                 {
                     SqlCommand command = new SqlCommand(query, connection);
 
-                    DataTable dtLista = new DataTable();
                     SqlDataAdapter sqlData = new SqlDataAdapter(command);
 
-                    DataSet list = new DataSet();
-                    sqlData.Fill(list);
+                    DataTable dtLista = new DataTable();
+                    sqlData.Fill(dtLista);
 
-                    if (list.Tables[0].Rows.Count >= 0)
+
+                    if (dtLista.Rows.Count >= 0)
                     {
 
                         return true;
