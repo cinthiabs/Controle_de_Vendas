@@ -22,19 +22,23 @@ namespace ControledeVendas
                 PanelPrincipal.Visible = true;
                 PanelSegundo.Visible = false;
                 Btn_Atualizar.Visible = false;
+                TableConsulta();
 
-                Data = DataBaseService.ConsultaTable();
-                Dados.DataSource = Data;
-                Dados.DataBind();
                 if (txtProduto.Value == "")
                 {
-                    Data = DataBaseService.ConsultaTable();
-                    Dados.DataSource = Data;
-                    Dados.DataBind();
+                  TableConsulta();
                 }
-           
+
 
         }
+        public void TableConsulta()
+        {
+            Data = DataBaseService.ConsultaTable();
+            Dados.DataSource = Data;
+            Dados.DataBind();
+
+        }
+
 
         protected void Btn_Consultar_Click(object sender, EventArgs e)
         {
@@ -90,7 +94,7 @@ namespace ControledeVendas
                     else
                     {
                         var insert = DataBaseService.InsertProduto(prod);
-                        if (insert != null)
+                        if (insert == true)
                         {
                             ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto Cadastrada com sucesso!')</script>");
                             PanelPrincipal.Visible = true;
@@ -127,18 +131,22 @@ namespace ControledeVendas
         protected void Btn_Atualizar_Click(object sender, EventArgs e)
         {
             Entidades.Produtos prod = new Entidades.Produtos();
-            prod.produto = txtProduto.Value;
+            prod.produto = inputProduto.Value;
             prod.id = Convert.ToInt32(txtid.Value);
 
-            var retorno = DataBaseService.AtualizarProd(prod);
+            bool retorno = DataBaseService.AtualizarProd(prod);
             {
-                if (retorno != null)
+                if (retorno == true)
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto Cadastrada com sucesso!')</script>");
+                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto Atualizado com sucesso!')</script>");
                     PanelPrincipal.Visible = true;
                     PanelSegundo.Visible = false;
                     Btn_Atualizar.Visible = false;
+                    txtProduto.Value = "";
+
+                    TableConsulta();
                 }
+
             }
 
         }
@@ -157,6 +165,8 @@ namespace ControledeVendas
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto excluido com sucesso!')</script>");
                     txtProduto.Value = "";
+                    TableConsulta();
+
                 }
 
             }

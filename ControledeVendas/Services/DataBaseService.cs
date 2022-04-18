@@ -107,7 +107,6 @@ namespace ControledeVendas.Services
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
-
                 string query = "SELECT top 5 * FROM Categoria";
                 connection.Open();
 
@@ -127,8 +126,7 @@ namespace ControledeVendas.Services
             }
 
         }
-        
-        public static Entidades.Produtos AtualizarProd(Entidades.Produtos prod)
+        public static bool AtualizarProd(Entidades.Produtos prod)
         {
             using (SqlConnection connection = new SqlConnection(conn))
             {
@@ -147,12 +145,12 @@ namespace ControledeVendas.Services
 
                     if (dtLista.Rows.Count >= 0)
                     {
-                        produto.id = Convert.ToInt32(dtLista.Rows[0]["id"].ToString());
-                        produto.produto = dtLista.Rows[0]["produto"].ToString();
-
+                        return true;
                     }
-                    return produto;
-
+                    else
+                    {
+                        return false;
+                    }
                 }
                 catch (Exception e)
                 {
@@ -163,7 +161,7 @@ namespace ControledeVendas.Services
 
         }
 
-        public static Entidades.Produtos InsertProduto(Entidades.Produtos prod)
+        public static bool InsertProduto(Entidades.Produtos prod)
         {
             using (SqlConnection connection = new SqlConnection(conn))
             {
@@ -183,10 +181,13 @@ namespace ControledeVendas.Services
 
                     if (list.Tables[0].Rows.Count >= 0)
                     {
-                        //produtos = list;
-                        return produtos;
+
+                        return true;
                     }
-                    return produtos;
+                    else
+                    {
+                        return false;
+                    }
 
                 }
                 catch (Exception e)
@@ -301,7 +302,6 @@ namespace ControledeVendas.Services
                         compra.Quant = dtLista.Rows[0]["quant"].ToString();
                         compra.precoUnt = dtLista.Rows[0]["precoUnt"].ToString();
                         compra.precoTotal = dtLista.Rows[0]["precoTotal"].ToString();
-
                     }
                     return compra;
 
@@ -309,46 +309,10 @@ namespace ControledeVendas.Services
                 catch (Exception e)
                 {
                     throw new ArgumentException(e.Message);
-
                 }
             }
         }
 
-        //public static Produto ConsultaVenda(Vendas venda)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(conn))
-        //    {
-        //        Vendas pedido = new Vendas();
-        //        //var query = @"select * from Vendas where id = " + venda.id;
-        //        connection.Open();
-
-        //        try
-        //        {
-        //            //SqlCommand command = new SqlCommand(query, connection);
-
-        //            //DataTable dtLista = new DataTable();
-        //            //SqlDataAdapter sqlData = new SqlDataAdapter(command);
-        //            //sqlData.Fill(dtLista);
-
-        //            //if (dtLista.Rows.Count >= 0)
-        //            //{
-        //            //    pedido.id = Convert.ToInt32(dtLista.Rows[0]["id"].ToString());
-        //            //    pedido.Data = Convert.ToDateTime(dtLista.Rows[0]["data"].ToString());
-        //            //    pedido.produto = dtLista.Rows[0]["produto"].ToString();
-        //            //    pedido.Quant = dtLista.Rows[0]["quant"].ToString();
-        //            //    pedido.precoUnt = dtLista.Rows[0]["precoUnt"].ToString();
-        //            //    pedido.precoTotal = dtLista.Rows[0]["precoTotal"].ToString();
-        //            //}
-        //            //return pedido;
-
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            throw new ArgumentException(e.Message);
-
-        //        }
-        //    }
-        //}
         public void Produto()
         {
             using (SqlConnection connection = new SqlConnection(conn))
