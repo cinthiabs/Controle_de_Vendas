@@ -132,7 +132,6 @@ namespace ControledeVendas.Services
         {
             using (SqlConnection connection = new SqlConnection(conn))
             {
-                
                 Entidades.Produtos produto = new Entidades.Produtos();
 
                 var query = @"update Produto set produto='" + prod.produto + "' where id="+ prod.id+ "";

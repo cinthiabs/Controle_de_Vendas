@@ -51,7 +51,6 @@ namespace ControledeVendas
                     {
                         Dados.DataSource = retorno;
                         Dados.DataBind();
-
                     }
 
                 }
@@ -87,7 +86,6 @@ namespace ControledeVendas
                     if (retorno.id != 0)
                     {
                         ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto já Cadastrado.')</script>");
-
                     }
                     else
                     {
@@ -109,11 +107,10 @@ namespace ControledeVendas
 
         protected void Btn_Editar_Click(object sender, EventArgs e)
         {
+            Adicionar.Visible = false;
             PanelPrincipal.Visible = false;
             PanelSegundo.Visible = true;
             Btn_Atualizar.Visible = true;
-            Btn_Inserir.Visible = false;
-
 
             Entidades.Produtos prod = new Entidades.Produtos();
             prod.produto = txtProduto.Value;
@@ -124,8 +121,6 @@ namespace ControledeVendas
             {
                 txtid.Value = Convert.ToInt32(retorno.id).ToString();
                 inputProduto.Value = retorno.produto;
-              
-
             }
 
         }
