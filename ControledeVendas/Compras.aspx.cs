@@ -21,7 +21,6 @@ namespace ControledeVendas
             PanelPrincipal.Visible = true;
             PanelSegundo.Visible = false;
             Btn_Atualizar.Visible = false;
-            //botao.Visible = false;
             TableConsulta();
         }
         public void TableConsulta()
@@ -42,7 +41,6 @@ namespace ControledeVendas
 
                 else
                 {
-
                     var retorno = DataBaseService.ConsultaCompra(txtid.Value);
                     if (retorno != null)
                     {
@@ -66,7 +64,6 @@ namespace ControledeVendas
                 if (valida == true )
                 {
                     Entidades.Compras compra = new Entidades.Compras();
-
                     compra.produto = txtProduto.Value;
                     compra.Data = Convert.ToDateTime(txtData.Value);
                     compra.Quant = txtQuantidade.Value;
@@ -99,7 +96,25 @@ namespace ControledeVendas
             Btn_Inserir.Visible = true;
         }
 
-        protected void Btn_Excluir_Click(object sender, EventArgs e) { }
+        protected void Btn_Excluir_Click(object sender, EventArgs e) 
+        {
+            Entidades.Compras compra = new Entidades.Compras();
+            compra.id = Convert.ToInt32(txtid.Value);
+
+            var retorno = DataBaseService.ConsultaCompras(compra);
+            if (retorno != null)
+            {
+                var retornoExcluir = DataBaseService.ExcluirCompra(compra);
+                if (retornoExcluir == true)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto excluido com sucesso!')</script>");
+                    txtid.Value = "";
+                    TableConsulta();
+
+                }
+
+            }
+        }
         
         protected void Btn_Editar_Click(object sender, EventArgs e)
         {
@@ -115,12 +130,12 @@ namespace ControledeVendas
 
             if (retorno != null)
             {
-                txtid.Value = Convert.ToString(compra.id);
-                txtProduto.Value = compra.produto;
-                txtData.Value = Convert.ToString(compra.Data);
-                txtQuantidade.Value = compra.Quant;
-                txtPrecoUni.Value = compra.precoUnt;
-                txtPrecoTotal.Value = compra.precoTotal;
+                txtid.Value = Convert.ToString(retorno.id);
+                txtProduto.Value = retorno.produto;
+                txtData.Value = retorno.Data.ToString("yyyy-MM-dd");
+                txtQuantidade.Value = retorno.Quant;
+                txtPrecoUni.Value = retorno.precoUnt;
+                txtPrecoTotal.Value = retorno.precoTotal;
             }
         }
         public  bool ValidaCampos()

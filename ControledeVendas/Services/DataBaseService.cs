@@ -275,6 +275,41 @@ namespace ControledeVendas.Services
                 }
             }
         }
+        
+        public static bool ExcluirCompra(Entidades.Compras comp)
+        {
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                Entidades.Produtos produtos = new Entidades.Produtos();
+                var query = @" delete from Produto where id =" + comp.id + "";
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    DataTable dtLista = new DataTable();
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+
+                    if (dtLista.Rows.Count >= 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+        }
+
         public static bool AtualizaCompras(Entidades.Compras comp)
         {
             using (SqlConnection connection = new SqlConnection(conn))
@@ -366,6 +401,8 @@ namespace ControledeVendas.Services
             }
 
         }
+
+
 
     }
 }
