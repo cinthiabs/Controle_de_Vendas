@@ -8,16 +8,28 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 namespace ControledeVendas
 {
     public partial class Compras : System.Web.UI.Page
     {
+        DataTable Data = new DataTable();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            botao.Visible = false;
+            PanelPrincipal.Visible = true;
+            PanelSegundo.Visible = false;
+            //Btn_Atualizar.Visible = false;
+            //botao.Visible = false;
+            TableConsulta();
         }
-
+        public void TableConsulta()
+        {
+            Data = DataBaseService.ConsultaTableCompra();
+            Dados.DataSource = Data;
+            Dados.DataBind();
+        }
         protected void Btn_Consultar_Click(object sender, EventArgs e)
         {
             try
@@ -36,13 +48,13 @@ namespace ControledeVendas
                     var retorno = DataBaseService.ConsultaCompras(compra);
                     if (retorno != null)
                     {
-                        Id.InnerText = Convert.ToString(retorno.id);
-                        Data.InnerText = Convert.ToDateTime(retorno.Data).ToString();
-                        Produto.InnerText = retorno.produto;
-                        Quantidade.InnerText = retorno.Quant;
-                        PrecoUni.InnerText = retorno.precoUnt;
-                        PrecoTotal.InnerText = retorno.precoTotal;
-                        botao.Visible = true;
+                        //Id.InnerText = Convert.ToString(retorno.id);
+                        //Data.InnerText = Convert.ToDateTime(retorno.Data).ToString();
+                        //Produto.InnerText = retorno.produto;
+                        //Quantidade.InnerText = retorno.Quant;
+                        //PrecoUni.InnerText = retorno.precoUnt;
+                        //PrecoTotal.InnerText = retorno.precoTotal;
+                        //botao.Visible = true;
                     }
 
                 }
@@ -71,13 +83,13 @@ namespace ControledeVendas
                     var retorno = DataBaseService.InsertCompras(compra);
                     if (retorno != null)
                     {
-                        ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto cadastrado com sucesso! ID : " + retorno.id + "')</script>");
-                        Id.InnerText = Convert.ToString(retorno.id);
-                        Data.InnerText = Convert.ToDateTime(retorno.Data).ToString("yyyy-mm-dd hh:mm:ss");
-                        Produto.InnerText = retorno.produto;
-                        Quantidade.InnerText = retorno.Quant;
-                        PrecoUni.InnerText = retorno.precoUnt;
-                        PrecoTotal.InnerText = retorno.precoTotal;
+                        //ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto cadastrado com sucesso! ID : " + retorno.id + "')</script>");
+                        //Id.InnerText = Convert.ToString(retorno.id);
+                        //Data.InnerText = Convert.ToDateTime(retorno.Data).ToString("yyyy-mm-dd hh:mm:ss");
+                        //Produto.InnerText = retorno.produto;
+                        //Quantidade.InnerText = retorno.Quant;
+                        //PrecoUni.InnerText = retorno.precoUnt;
+                        //PrecoTotal.InnerText = retorno.precoTotal;
                     }
                 }
             }
@@ -87,8 +99,12 @@ namespace ControledeVendas
 
             }
         }
+        
+        protected void Btn_Adicionar_Click(object sender, EventArgs e) { }
 
-        protected void Editar_Click(object sender, EventArgs e)
+        protected void Btn_Excluir_Click(object sender, EventArgs e) { }
+
+        protected void Btn_Editar_Click(object sender, EventArgs e)
         {
 
             Entidades.Compras compra = new Entidades.Compras();
@@ -151,11 +167,11 @@ namespace ControledeVendas
                     if (retorno != null)
                     {
                         ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto atualizado com sucesso!')</script>");
-                        Data.InnerText = Convert.ToDateTime(retorno.Data).ToString("yyyy-mm-dd hh:mm:ss");
-                        Produto.InnerText = retorno.produto;
-                        Quantidade.InnerText = retorno.Quant;
-                        PrecoUni.InnerText = retorno.precoUnt;
-                        PrecoTotal.InnerText = retorno.precoTotal;
+                        //Data.InnerText = Convert.ToDateTime(retorno.Data).ToString("yyyy-mm-dd hh:mm:ss");
+                        //Produto.InnerText = retorno.produto;
+                        //Quantidade.InnerText = retorno.Quant;
+                        //PrecoUni.InnerText = retorno.precoUnt;
+                        //PrecoTotal.InnerText = retorno.precoTotal;
                     }
                 }
             }

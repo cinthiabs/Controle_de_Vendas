@@ -313,24 +313,31 @@ namespace ControledeVendas.Services
             }
         }
 
-        public void Produto()
+        public static DataTable ConsultaTableCompra()
         {
+
+            DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
+                string query = "SELECT top 5 * FROM Produto";
                 connection.Open();
 
-            
-                var query ="select * from Categoria";
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
 
-                SqlCommand command = new SqlCommand(query, connection);
-                DataTable dtLista = new DataTable();
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    return dtLista;
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
 
-                SqlDataAdapter sqlData = new SqlDataAdapter(command);
-                sqlData.Fill(dtLista);
-
+                }
             }
-                
 
         }
+
     }
 }

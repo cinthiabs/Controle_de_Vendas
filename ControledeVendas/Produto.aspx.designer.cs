@@ -42,15 +42,6 @@ namespace ControledeVendas
         protected global::System.Web.UI.WebControls.Button Btn_Consultar;
 
         /// <summary>
-        /// Controle Btn_Inserir.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_Inserir;
-
-        /// <summary>
         /// Controle botaoN.
         /// </summary>
         /// <remarks>
@@ -67,6 +58,15 @@ namespace ControledeVendas
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater Dados;
+
+        /// <summary>
+        /// Controle Btn_Inserir.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Btn_Inserir;
 
         /// <summary>
         /// Controle PanelSegundo.
@@ -112,23 +112,5 @@ namespace ControledeVendas
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Btn_Atualizar;
-
-        /// <summary>
-        /// Controle txt.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt;
-
-        /// <summary>
-        /// Controle LblRecebe.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblRecebe;
     }
 }

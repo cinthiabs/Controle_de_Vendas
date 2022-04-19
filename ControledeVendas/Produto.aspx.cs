@@ -32,7 +32,6 @@ namespace ControledeVendas
             Data = DataBaseService.ConsultaTable();
             Dados.DataSource = Data;
             Dados.DataBind();
-
         }
 
 
@@ -146,7 +145,6 @@ namespace ControledeVendas
             }
 
         }
-
         protected void Btn_Excluir_Click(object sender, EventArgs e)
         {
             Entidades.Produtos prod = new Entidades.Produtos();
