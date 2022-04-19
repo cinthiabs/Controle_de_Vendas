@@ -69,6 +69,24 @@ namespace ControledeVendas
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtPrecoTotal;
 
         /// <summary>
+        /// Controle Adicionar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Adicionar;
+
+        /// <summary>
+        /// Controle Btn_Atualizar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Btn_Atualizar;
+
+        /// <summary>
         /// Controle PanelPrincipal.
         /// </summary>
         /// <remarks>

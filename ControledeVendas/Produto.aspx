@@ -84,13 +84,10 @@
                     <label for="inputProduto">Produto:</label>
                     <input type="text" class="form-control" id="inputProduto" runat="server">
                 </div>
-
                 <br />
                 <div class="form-group col-md-12 combo">
-
                     <asp:Button ID="Adicionar" class="btn btn-success" runat="server" type="submit" Text="Adicionar" OnClick="Btn_Inserir_Click" />
                     <asp:Button ID="Btn_Atualizar" class="btn btn-success" runat="server" Text="Atualizar" OnClick="Btn_Atualizar_Click" />
-
                 </div>
             </div>
         </form>

@@ -172,7 +172,6 @@ namespace ControledeVendas.Services
                 try
                 {
                     SqlCommand command = new SqlCommand(query, connection);
-
                     SqlDataAdapter sqlData = new SqlDataAdapter(command);
 
                     DataTable dtLista = new DataTable();
@@ -234,13 +233,20 @@ namespace ControledeVendas.Services
             }
         }
 
-        public static Entidades.Compras InsertCompras(Entidades.Compras comp)
+        public static bool InsertCompras(Entidades.Compras comp)
         {
             using (SqlConnection connection = new SqlConnection(conn))
             {
                 Entidades.Compras compra = new Entidades.Compras();
+               
+                string data = comp.Data.ToString("yyyy-dd-MM");
+                var precoTotal = comp.precoTotal;
+                var precoUnt = comp.precoUnt;
+                precoTotal = precoTotal.Replace(',', '.');
+                precoUnt = precoUnt.Replace(',', '.');
 
-                var query = @"insert into Produto(data, produto, Quant,precoUnt,precoTotal)values('"+ comp.Data.ToString("yyyy-dd-mm hh:mm:ss") + "','" + comp.produto + "','" + comp.Quant + "'," + comp.precoUnt + "," + comp.precoTotal + ")";
+
+                var query = @"insert into Produto(data, produto, Quant,precoUnt,precoTotal)values('"+ data + "','" + comp.produto + "','" + comp.Quant + "'," + precoUnt + "," + precoTotal + ")";
                 connection.Open();
 
                 try
@@ -253,14 +259,13 @@ namespace ControledeVendas.Services
 
                     if (dtLista.Rows.Count >= 0)
                     {
-                        compra.id = Convert.ToInt32(dtLista.Rows[0]["id"].ToString());
-                        compra.Data = Convert.ToDateTime(dtLista.Rows[0]["data"].ToString());
-                        compra.produto = dtLista.Rows[0]["produto"].ToString();
-                        compra.Quant = dtLista.Rows[0]["quant"].ToString();
-                        compra.precoUnt = dtLista.Rows[0]["precoUnt"].ToString();
-                        compra.precoTotal = dtLista.Rows[0]["precoTotal"].ToString();
+                        return true;
                     }
-                    return compra;
+                    else
+                    {
+                        return false;
+
+                    }
 
                 }
                 catch (Exception e)
@@ -270,7 +275,7 @@ namespace ControledeVendas.Services
                 }
             }
         }
-        public static Entidades.Compras AtualizaCompras(Entidades.Compras comp)
+        public static bool AtualizaCompras(Entidades.Compras comp)
         {
             using (SqlConnection connection = new SqlConnection(conn))
             {
@@ -296,14 +301,13 @@ namespace ControledeVendas.Services
 
                     if (dtLista.Rows.Count >= 0)
                     {
-                        compra.id = Convert.ToInt32(dtLista.Rows[0]["id"].ToString());
-                        compra.Data = Convert.ToDateTime(dtLista.Rows[0]["data"].ToString());
-                        compra.produto = dtLista.Rows[0]["produto"].ToString();
-                        compra.Quant = dtLista.Rows[0]["quant"].ToString();
-                        compra.precoUnt = dtLista.Rows[0]["precoUnt"].ToString();
-                        compra.precoTotal = dtLista.Rows[0]["precoTotal"].ToString();
+                        return true;
                     }
-                    return compra;
+                    else
+                    {
+                        return false;
+
+                    }
 
                 }
                 catch (Exception e)
@@ -312,7 +316,31 @@ namespace ControledeVendas.Services
                 }
             }
         }
+        public static DataTable ConsultaCompra(string id)
+        {
 
+            DataTable dtLista = new DataTable();
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                var query = @"select * from Produto where id = " + id;
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    return dtLista;
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+
+        }
         public static DataTable ConsultaTableCompra()
         {
 

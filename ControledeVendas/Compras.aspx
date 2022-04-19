@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Title="Compras" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Compras.aspx.cs" Inherits="ControledeVendas.Compras" %>
+﻿<%@ Page Language="C#" Title="Compras" EnableEventValidation="false"  MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Compras.aspx.cs" Inherits="ControledeVendas.Compras" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -45,6 +45,11 @@
                         <label for="txtPrecoTotal">Preço Total:</label>
                         <input type="text" class="form-control" id="txtPrecoTotal" runat="server">
                     </div>
+                    <br />
+                    <div class="form-group col-md-12 combo">
+                       <asp:Button ID="Adicionar" class="btn btn-success" runat="server" type="submit" Text="Adicionar" OnClick="Btn_Inserir_Click" />
+                       <asp:Button ID="Btn_Atualizar" class="btn btn-success" runat="server" Text="Atualizar" OnClick="Btn_Atualizar_Click" />
+                   </div>
                 </div>
             </form>
             <br />

@@ -20,7 +20,7 @@ namespace ControledeVendas
         {
             PanelPrincipal.Visible = true;
             PanelSegundo.Visible = false;
-            //Btn_Atualizar.Visible = false;
+            Btn_Atualizar.Visible = false;
             //botao.Visible = false;
             TableConsulta();
         }
@@ -42,19 +42,12 @@ namespace ControledeVendas
 
                 else
                 {
-                    Entidades.Compras compra = new Entidades.Compras();
-                    compra.id = Convert.ToInt32(txtid.Value);
 
-                    var retorno = DataBaseService.ConsultaCompras(compra);
+                    var retorno = DataBaseService.ConsultaCompra(txtid.Value);
                     if (retorno != null)
                     {
-                        //Id.InnerText = Convert.ToString(retorno.id);
-                        //Data.InnerText = Convert.ToDateTime(retorno.Data).ToString();
-                        //Produto.InnerText = retorno.produto;
-                        //Quantidade.InnerText = retorno.Quant;
-                        //PrecoUni.InnerText = retorno.precoUnt;
-                        //PrecoTotal.InnerText = retorno.precoTotal;
-                        //botao.Visible = true;
+                        Dados.DataSource = retorno;
+                        Dados.DataBind();
                     }
 
                 }
@@ -81,15 +74,13 @@ namespace ControledeVendas
                     compra.precoTotal = txtPrecoTotal.Value;
 
                     var retorno = DataBaseService.InsertCompras(compra);
-                    if (retorno != null)
+                    if (retorno == true)
                     {
-                        //ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto cadastrado com sucesso! ID : " + retorno.id + "')</script>");
-                        //Id.InnerText = Convert.ToString(retorno.id);
-                        //Data.InnerText = Convert.ToDateTime(retorno.Data).ToString("yyyy-mm-dd hh:mm:ss");
-                        //Produto.InnerText = retorno.produto;
-                        //Quantidade.InnerText = retorno.Quant;
-                        //PrecoUni.InnerText = retorno.precoUnt;
-                        //PrecoTotal.InnerText = retorno.precoTotal;
+                        ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto cadastrado com sucesso!')</script>");
+                        PanelPrincipal.Visible = true;
+                        PanelSegundo.Visible = false;
+                        LimpaCampos();
+                        TableConsulta();
                     }
                 }
             }
@@ -100,12 +91,22 @@ namespace ControledeVendas
             }
         }
         
-        protected void Btn_Adicionar_Click(object sender, EventArgs e) { }
+        protected void Btn_Adicionar_Click(object sender, EventArgs e)
+        {
+            PanelPrincipal.Visible = false;
+            PanelSegundo.Visible = true;
+            Btn_Atualizar.Visible = false;
+            Btn_Inserir.Visible = true;
+        }
 
         protected void Btn_Excluir_Click(object sender, EventArgs e) { }
-
+        
         protected void Btn_Editar_Click(object sender, EventArgs e)
         {
+            Adicionar.Visible = false;
+            PanelPrincipal.Visible = false;
+            PanelSegundo.Visible = true;
+            Btn_Atualizar.Visible = true;
 
             Entidades.Compras compra = new Entidades.Compras();
             compra.id = Convert.ToInt32(txtid.Value);
@@ -114,12 +115,12 @@ namespace ControledeVendas
 
             if (retorno != null)
             {
-                txtData.Value = Convert.ToDateTime(retorno.Data).ToString("yyyy-MM-dd");
-                txtProduto.Value = retorno.produto;
-                txtQuantidade.Value = retorno.Quant;
-                txtPrecoUni.Value = Convert.ToString(retorno.precoUnt);
-                txtPrecoTotal.Value = Convert.ToString(retorno.precoTotal);
-
+                txtid.Value = Convert.ToString(compra.id);
+                txtProduto.Value = compra.produto;
+                txtData.Value = Convert.ToString(compra.Data);
+                txtQuantidade.Value = compra.Quant;
+                txtPrecoUni.Value = compra.precoUnt;
+                txtPrecoTotal.Value = compra.precoTotal;
             }
         }
         public  bool ValidaCampos()
@@ -146,6 +147,14 @@ namespace ControledeVendas
             }
             return retorno;
         }
+        public void LimpaCampos()
+        {
+            txtData.Value = "";
+            txtProduto.Value = "";
+            txtPrecoTotal.Value = "";
+            txtPrecoUni.Value = "";
+            txtQuantidade.Value = "";
+        }
 
         protected void Btn_Atualizar_Click(object sender, EventArgs e)
         {
@@ -162,16 +171,15 @@ namespace ControledeVendas
                     compra.precoUnt = txtPrecoUni.Value;
                     compra.precoTotal = txtPrecoTotal.Value;
 
-
                     var retorno = DataBaseService.AtualizaCompras(compra);
-                    if (retorno != null)
+                    if (retorno == true)
                     {
-                        ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Produto atualizado com sucesso!')</script>");
-                        //Data.InnerText = Convert.ToDateTime(retorno.Data).ToString("yyyy-mm-dd hh:mm:ss");
-                        //Produto.InnerText = retorno.produto;
-                        //Quantidade.InnerText = retorno.Quant;
-                        //PrecoUni.InnerText = retorno.precoUnt;
-                        //PrecoTotal.InnerText = retorno.precoTotal;
+                        ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Cadastro atualizado com sucesso!')</script>");
+                        PanelPrincipal.Visible = true;
+                        PanelSegundo.Visible = false;
+                        Btn_Atualizar.Visible = false;
+                        LimpaCampos();
+                        TableConsulta();
                     }
                 }
             }
