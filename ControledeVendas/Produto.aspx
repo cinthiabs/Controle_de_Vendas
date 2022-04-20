@@ -3,6 +3,14 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script>
+        $('input#txtProduto').quicksearch('table#tcount tbody tr');
+    </script>
     <style>
         .row {
             padding-top: 40px;
@@ -68,7 +76,6 @@
          <div class="form-group col-md-12 col-sm-11 col-xs-12 combo">
            <asp:Button ID="Btn_Inserir" class="btn btn-success" runat="server" Text="Adicionar Novo" OnClick="Btn_Adicionar_Click" />
          </div>
-    </div>
     </asp:Panel>
 
     <asp:Panel runat="server" ID="PanelSegundo">
@@ -92,8 +99,9 @@
             </div>
         </form>
     </asp:Panel>
-
+  </div>
     <script>
+
         function pergunta() {
             if (confirm("Deseja realmente excluir?")) {
 
@@ -105,6 +113,7 @@
 
             }
         }
+
     </script>
 </asp:Content>
 

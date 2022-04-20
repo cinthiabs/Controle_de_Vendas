@@ -402,7 +402,53 @@ namespace ControledeVendas.Services
 
         }
 
+        public static DataTable PesquisaValoresProduto()
+        {
+            DataTable dtLista = new DataTable();
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                string query = "SELECT * FROM Categoria";
+                connection.Open();
 
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
 
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    return dtLista;
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+        }
+        public static DataTable ConsultaTableVendas()
+        {
+
+            DataTable dtLista = new DataTable();
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                string query = "SELECT top 5 * FROM Vendas";
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    return dtLista;
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+
+        }
     }
 }

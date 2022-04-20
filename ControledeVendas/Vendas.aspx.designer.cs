@@ -15,6 +15,15 @@ namespace ControledeVendas
     {
 
         /// <summary>
+        /// Controle PanelSegundo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelSegundo;
+
+        /// <summary>
         /// Controle txtData.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace ControledeVendas
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtData;
+
+        /// <summary>
+        /// Controle DropProduto.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropProduto;
 
         /// <summary>
         /// Controle txtCliente.
@@ -51,6 +69,15 @@ namespace ControledeVendas
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtValor;
 
         /// <summary>
+        /// Controle Adicionar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Adicionar;
+
+        /// <summary>
         /// Controle Btn_Atualizar.
         /// </summary>
         /// <remarks>
@@ -60,22 +87,13 @@ namespace ControledeVendas
         protected global::System.Web.UI.WebControls.Button Btn_Atualizar;
 
         /// <summary>
-        /// Controle Btn_inserir.
+        /// Controle PanelPrincipal.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_inserir;
-
-        /// <summary>
-        /// Controle Btn_Excluir.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_Excluir;
+        protected global::System.Web.UI.WebControls.Panel PanelPrincipal;
 
         /// <summary>
         /// Controle txtid.
@@ -87,12 +105,30 @@ namespace ControledeVendas
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtid;
 
         /// <summary>
-        /// Controle Button1.
+        /// Controle Consultar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button Consultar;
+
+        /// <summary>
+        /// Controle Dados.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater Dados;
+
+        /// <summary>
+        /// Controle Btn_Inserir.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Btn_Inserir;
     }
 }

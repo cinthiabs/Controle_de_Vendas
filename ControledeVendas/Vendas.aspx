@@ -21,89 +21,111 @@
     </style>
     <div class="row">
         <h3><%: Title %></h3>
-
-        <form action="">
-            <div class="containerTable">
-                <div class="form-group col-md-4">
-                    <label for="txtData">Data:</label>
-                    <input type="datetime-local" class="form-control" id="txtData" runat="server">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="txtProduto">Produto:</label>
-                    <select id="txtProduto" class="form-control">
-                        <option selected>Escolher...</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="txtCliente">Cliente:</label>
-                    <input type="text" class="form-control" id="txtCliente" runat="server">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="txtQuantidade">Quantidade:</label>
-                    <input type="text" class="form-control" id="txtQuantidade" runat="server">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="txtValor">Valor:</label>
-                    <input type="number" class="form-control" id="txtValor" runat="server">
-                </div>
-                <div class="form-group col-md-4">
-                    <asp:DropDowList> 
-<%--                        preciso arrumar--%>
-                         <label for="txtPago">Pago:</label>
-                    </asp:DropDowList>
-
-                    <label for="txtPago">Pago:</label>
-                    <select id="txtPago" class="form-control">
-                        <option value="0">Escolher...</option>
-                         <option value=""></option>
-                    </select>
-                </div>
+        <asp:Panel runat="server" ID="PanelSegundo">
+            <form>
+                <div class="containerTable">
+                    <div class="form-group col-md-4">
+                        <label for="txtData">Data:</label>
+                        <input type="datetime-local" class="form-control" id="txtData" runat="server">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtProduto">Produto:</label>
+                        <asp:DropDownList ID="DropProduto" runat="server" BackColor="White" class="form-control">
+                        </asp:DropDownList>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtCliente">Cliente:</label>
+                        <input type="text" class="form-control" id="txtCliente" runat="server">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtQuantidade">Quantidade:</label>
+                        <input type="text" class="form-control" id="txtQuantidade" runat="server">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtValor">Valor:</label>
+                        <input type="number" class="form-control" id="txtValor" runat="server">
+                    </div>
+                    
+                        <div class="form-group col-md-4">
+                            <label for="txtPago">Pago:</label>
+                            <select id="txtPago" class="form-control">
+                                <option value="">Escolher...</option>
+                                <option value="1">Sim</option>
+                                <option value="0">Não</option>
+                            </select>
+                        </div>
+                   </div>
                 <br />
-
                 <div class="form-group col-md-12 combo">
-                    <asp:Button ID="Btn_Atualizar" class="btn btn-primary" runat="server" Text="Atualizar" />
-                    <asp:Button ID="Btn_inserir" class="btn btn-success" runat="server" type="submit" Text="Inserir" OnClick="Btn_inserir_Click" />
-                    <asp:Button ID="Btn_Excluir" class="btn btn-danger" runat="server" type="submit" Text="Excluir" OnClick="Btn_Excluir_Click" />
+                       <asp:Button ID="Adicionar" class="btn btn-success" runat="server" type="submit" Text="Adicionar" OnClick="Btn_Inserir_Click" />
+                       <asp:Button ID="Btn_Atualizar" class="btn btn-success" runat="server" Text="Atualizar" OnClick="Btn_Atualizar_Click" />
                 </div>
+        </form>
+      <br />
+    </asp:Panel>
 
+        <asp:Panel runat="server" ID="PanelPrincipal">
+
+            <div class="form-group col-md-11 col-sm-11 col-xs-11 input-group">
+                <input type="number" class="form-control" id="txtid" runat="server" placeholder="Codigo da Venda" style="width: 100%">
+                <div class="input-group-btn">
+                    <asp:Button ID="Consultar" class="btn btn-primary" runat="server" Text="Consultar" OnClick="Btn_Consultar_Click" />
+                </div>
             </div>
 
-        </form>
-        <br />
-        <div class="form-group col-md-12 col-sm-12 col-xs-12">
-            <label for="txtid">Consultar ID:</label>
-            <input type="number" class="form-control" id="txtid" runat="server" style="width: 100%">
-            <br />
-            <asp:Button ID="Button1" class="btn btn-primary" runat="server" Text="Consultar" OnClick="Btn_Consultar_Click" />
-        </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 10%;">ID</th>
+                        <th scope="col" style="width: 20%;">Data</th>
+                        <th scope="col" style="width: 15%;">Produto</th>
+                        <th scope="col" style="width: 20%;">Cliente</th>
+                        <th scope="col" style="width: 10%;">Quantidade</th>
+                        <th scope="col" style="width: 10%;">Valor</th>
+                        <th scope="col" style="width: 20%;">Pago</th>
+                        <th scope="col"></th>
+                        <th scope="col" style="width: 70%;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <asp:Repeater ID="Dados" runat="server">
+                        <ItemTemplate>
+                            <tr>
+                                <td><%# Eval("id") %></td>
+                                <td><%# Eval("Data") %>"</td>
+                                <td><%# Eval("Produtoid") %>"</td>
+                                <td><%# Eval("Cliente") %>"</td>
+                                <td><%# Eval("Quant") %>"</td>
+                                <td><%# Eval("PrecoTotal") %>"</td>
+                                <td><%# Eval("Pago") %>"</td>
+                                <td><%# Eval("botao") %>"</td>
+                               <td id="botao" runat="server">
+                                  <asp:Button ID="Editar" class="btn btn-primary" runat="server" Text="Editar" OnClick="Btn_Editar_Click" />
+                                  <asp:Button ID="Excluir" class="btn btn-danger" runat="server" Text="Excluir" OnClientClick="javascript:return pergunta();" OnClick="Btn_Excluir_Click" />
+                              </td>
+                           </tr>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </tbody>
+            </table>
+             <div class="form-group col-md-12 col-sm-11 col-xs-11 combo">
+                <asp:Button ID="Btn_Inserir" class="btn btn-success" runat="server" Text="Adicionar Novo" OnClick="Btn_Adicionar_Click" />
+            </div>
 
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Data</th>
-                    <th scope="col">Produto</th>
-                    <th scope="col">Cliente</th>
-                    <th scope="col">Quantidade</th>
-                    <th scope="col">Valor</th>
-                    <th scope="col">Pago</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                   <%-- <td id="<%# Eval("Data") %>" runat="server"></td>
-                    <td id="<%# Eval("Quantidade") %>" runat="server"></td>
-                    <td id="<%# Eval("Produto") %>" runat="server"></td>
-                    <td id="<%# Eval("Cliente") %>" runat="server"></td>
-                    <td id="<%# Eval("PrecoUni") %>" runat="server"></td>
-                    <td id="<%# Eval("PrecoTotal") %>" runat="server"></td>
-                    <td id="<%# Eval("botao") %>" runat="server">--%>
-<%--                        <asp:Button ID="Button2" class="btn btn-primary" runat="server" type="submit" Text="Editar" OnClick="Button2_Click" />--%>
-                    </td>
+        </asp:Panel>
+      </div>
+    <script>
+        function pergunta() {
+            if (confirm("Deseja realmente excluir?")) {
 
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                return true;
+
+            } else {
+
+                return false;
+
+            }
+        }
+    </script>
 
 </asp:Content>

@@ -52,8 +52,8 @@
                    </div>
                 </div>
             </form>
-            <br />
-        </asp:Panel>
+          <br />
+       </asp:Panel>
 
         <asp:Panel runat="server" ID="PanelPrincipal">
           <form>
@@ -99,9 +99,9 @@
             <div class="form-group col-md-12 col-sm-11 col-xs-11 combo">
                 <asp:Button ID="Btn_Inserir" class="btn btn-success" runat="server" Text="Adicionar Novo" OnClick="Btn_Adicionar_Click" />
             </div>
-    </div>
+     </asp:Panel>
+  </div>
 
-    </asp:Panel>
     <script>
         function pergunta() {
             if (confirm("Deseja realmente excluir?")) {
