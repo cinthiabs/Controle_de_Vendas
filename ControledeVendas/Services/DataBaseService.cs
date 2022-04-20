@@ -431,7 +431,8 @@ namespace ControledeVendas.Services
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
-                string query = "SELECT top 5 * FROM Vendas";
+                string query = "SELECT top 5 v.id,data,c.Nome, Cliente,Quant,precoTotal,case when pago = 1 then 'Sim' else 'Não'  end pago FROM Vendas v";
+                query += " inner join Categoria c on v.Produtoid = c.id";
                 connection.Open();
 
                 try

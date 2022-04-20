@@ -74,7 +74,7 @@
                             <th scope="col"style="width: 20%;">Produto</th>
                             <th scope="col"style="width: 10%;">Preço Unitário</th>
                             <th scope="col"style="width: 10%;">Preço Total</th>
-                            <th scope="col" style="width: 70%;"></th>
+                            <th scope="col" style="width:60%;"></th>
                         </tr>
                     </thead>
                     <tbody>
