@@ -474,6 +474,43 @@ namespace ControledeVendas.Services
             }
 
         }
+        public static bool AtualizaVendas(Entidades.Vendas vend)
+        {
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                string data = vend.Data.ToString("yyyy-dd-MM");
+                var precoTotal = vend.precoTotal;
+                precoTotal = precoTotal.Replace(',', '.');
+                string GetData = DateTime.Now.ToString("yyyy-dd-MM");
+
+                var query = @"update Vendas set data='" + data + "', Cliente='" + vend.Cliente + "', produtoid=" + vend.produtoid + ", Quant='" + vend.Quant + "',precoTotal=" + precoTotal + ", DataAlteracao='" + GetData + "' where id = " + vend.id + "";
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    DataTable dtLista = new DataTable();
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+
+                    if (dtLista.Rows.Count >= 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+                }
+            }
+        }
         public static bool ExcluirVendas(Entidades.Vendas vend)
         {
             using (SqlConnection connection = new SqlConnection(conn))
@@ -511,7 +548,6 @@ namespace ControledeVendas.Services
         {
             using (SqlConnection connection = new SqlConnection(conn))
             {
-                Entidades.Compras compra = new Entidades.Compras();
 
                 string data = vend.Data.ToString("yyyy-dd-MM");
                 var precoTotal = vend.precoTotal;
