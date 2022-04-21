@@ -21,6 +21,7 @@ namespace ControledeVendas
             Btn_Atualizar.Visible = false;
             TableConsulta();
             ValoresProduto();
+            ValoresPagamento();
         }
         public void TableConsulta()
         {
@@ -43,7 +44,7 @@ namespace ControledeVendas
             }
             else if (string.IsNullOrEmpty(txtValor.Value))
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe o Preço unitário.')</script>");
+                ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe o Valor.')</script>");
                 retorno = false;
             }
             
@@ -62,6 +63,21 @@ namespace ControledeVendas
                
             }
         }
+        public void ValoresPagamento()
+        {
+            DataTable Data;
+            Data = DataBaseService.PesquisaValoresPagamento();
+            DropPago.DataSource = Data;
+            DropPago.DataTextField = "descricao";
+            DropPago.DataValueField = "id";
+
+            if (Data.Rows.Count > 0)
+            {
+                DropPago.DataBind();
+            }
+            DropPago.Items.Insert(0, new ListItem("--Selecione--", "0"));
+            DropPago.SelectedIndex = 0;
+        }
         public void ValoresProduto()
         {
             DataTable Data;
@@ -77,11 +93,6 @@ namespace ControledeVendas
             DropProduto.Items.Insert(0, new ListItem("--Selecione--", "0"));
             DropProduto.SelectedIndex = 0;
         }
-        protected void Btn_Inserir_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void Btn_Editar_Click(object sender, EventArgs e)
         {
 
@@ -89,7 +100,20 @@ namespace ControledeVendas
 
         protected void Btn_Excluir_Click(object sender, EventArgs e)
         {
+            Entidades.Vendas vend = new Entidades.Vendas();
+            vend.id = Convert.ToInt32(txtid.Value);
 
+            var retorno = DataBaseService.ConsultaVendas(txtid.Value);
+            if (retorno != null)
+            {
+                var retornoExcluir = DataBaseService.ExcluirVendas(vend);
+                if (retornoExcluir == true)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Venda excluida com sucesso!')</script>");
+                    txtid.Value = "";
+                    TableConsulta();
+                }
+            }
         }
         protected void Btn_Atualizar_Click(object sender, EventArgs e)
         {
@@ -102,7 +126,47 @@ namespace ControledeVendas
             Btn_Atualizar.Visible = false;
             Btn_Inserir.Visible = true;
         }
-        
+        public void LimpaCampos()
+        {
+            txtData.Value = "";
+            txtid.Value = "";
+            txtQuantidade.Value = "";
+            txtValor.Value = "";
+            ValoresProduto();
+            ValoresPagamento();
+        }
+        protected void Btn_Inserir_Click(object sender, EventArgs e)
+        {
 
+            try
+            {
+                bool valida = ValidaCampos();
+                if (valida == true)
+                {
+                    Entidades.Vendas vendas = new Entidades.Vendas();
+
+                    vendas.Data = Convert.ToDateTime(txtData.Value);
+                    vendas.produtoid = DropProduto.SelectedIndex;
+                    vendas.Cliente = txtCliente.Value;
+                    vendas.Quant = txtQuantidade.Value;
+                    vendas.precoTotal = txtValor.Value;
+                    vendas.Pago = DropPago.SelectedIndex;
+
+                    var retorno = DataBaseService.InsertVendas(vendas);
+                    if (retorno == true)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Venda cadastrada com sucesso!')</script>");
+                        PanelPrincipal.Visible = true;
+                        PanelSegundo.Visible = false;
+                        LimpaCampos();
+                        TableConsulta();
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

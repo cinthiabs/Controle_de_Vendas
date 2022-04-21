@@ -425,14 +425,137 @@ namespace ControledeVendas.Services
                 }
             }
         }
+        public static DataTable PesquisaValoresPagamento()
+        {
+            DataTable dtLista = new DataTable();
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                string query = "SELECT * FROM pago";
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    return dtLista;
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+        }
+
+        public static DataTable ConsultaVendas(string id)
+        {
+
+            DataTable dtLista = new DataTable();
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                var query = @"select * from vendas where id = " + id;
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    return dtLista;
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+
+        }
+        public static bool ExcluirVendas(Entidades.Vendas vend)
+        {
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                Entidades.Vendas vendas = new Entidades.Vendas();
+                var query = @" delete from Vendas where id =" + vend.id + "";
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    DataTable dtLista = new DataTable();
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+
+                    if (dtLista.Rows.Count >= 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+        }
+        public static bool InsertVendas(Entidades.Vendas vend)
+        {
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                Entidades.Compras compra = new Entidades.Compras();
+
+                string data = vend.Data.ToString("yyyy-dd-MM");
+                var precoTotal = vend.precoTotal;
+                precoTotal = precoTotal.Replace(',', '.');
+           
+
+                var query = @"insert into Vendas(data, produto, Cliente,Quant,precoTotal,pago)values('" + data + "'," + vend.produtoid + ",'" + vend.Cliente + "','" + vend.Quant + "'," + precoTotal + ","+vend.Pago+")";
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    DataTable dtLista = new DataTable();
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+
+                    if (dtLista.Rows.Count >= 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+        }
         public static DataTable ConsultaTableVendas()
         {
 
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
-                string query = "SELECT top 5 v.id,data,c.Nome, Cliente,Quant,precoTotal,case when pago = 1 then 'Sim' else 'Não'  end pago FROM Vendas v";
-                query += " inner join Categoria c on v.Produtoid = c.id";
+                string query = "SELECT top 5 v.id,data,c.Nome, Cliente,Quant,precoTotal,p.descricao FROM Vendas v";
+                query += " inner join Categoria c on v.Produtoid = c.id ";
+                query += " inner join pago p on v.Pago = p.id";
                 connection.Open();
 
                 try

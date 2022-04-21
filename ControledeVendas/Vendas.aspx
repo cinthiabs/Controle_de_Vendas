@@ -48,11 +48,8 @@
                     
                         <div class="form-group col-md-4">
                             <label for="txtPago">Pago:</label>
-                            <select id="txtPago" class="form-control">
-                                <option value="">Escolher...</option>
-                                <option value="1">Sim</option>
-                                <option value="0">Não</option>
-                            </select>
+                         <asp:DropDownList ID="DropPago" runat="server" BackColor="White" class="form-control">
+                        </asp:DropDownList>
                         </div>
                    </div>
                 <br />
@@ -96,7 +93,7 @@
                                 <td><%# Eval("Cliente") %></td>
                                 <td><%# Eval("Quant") %></td>
                                 <td><%# Eval("PrecoTotal") %></td>
-                                <td><%# Eval("Pago") %></td>
+                                <td><%# Eval("descricao") %></td>
                                <td id="botao" runat="server">
                                   <asp:Button ID="Editar" class="btn btn-primary" runat="server" Text="Editar" OnClick="Btn_Editar_Click" />
                                   <asp:Button ID="Excluir" class="btn btn-danger" runat="server" Text="Excluir" OnClientClick="javascript:return pergunta();" OnClick="Btn_Excluir_Click" />

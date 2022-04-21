@@ -13,8 +13,8 @@ namespace ControledeVendas.Entidades
         public string Nome { get; set; }
         public string Cliente { get; set; }
         public string Quant { get; set; }
-        public float precoUnt { get; set; }
-        public float precoTotal { get; set; }
+        public int Pago { get; set; }
+        public string precoTotal { get; set; }
 
     }
 }

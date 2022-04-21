@@ -69,6 +69,15 @@ namespace ControledeVendas
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtValor;
 
         /// <summary>
+        /// Controle DropPago.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropPago;
+
+        /// <summary>
         /// Controle Adicionar.
         /// </summary>
         /// <remarks>
