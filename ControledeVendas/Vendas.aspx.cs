@@ -146,11 +146,11 @@ namespace ControledeVendas
                     Entidades.Vendas vendas = new Entidades.Vendas();
 
                     vendas.Data = Convert.ToDateTime(txtData.Value);
-                    vendas.produtoid = DropProduto.SelectedIndex;
+                    vendas.produtoid =Convert.ToInt32(DropProduto.SelectedIndex);
                     vendas.Cliente = txtCliente.Value;
                     vendas.Quant = txtQuantidade.Value;
                     vendas.precoTotal = txtValor.Value;
-                    vendas.Pago = DropPago.SelectedIndex;
+                    vendas.Pago = Convert.ToInt32(DropPago.SelectedIndex);
 
                     var retorno = DataBaseService.InsertVendas(vendas);
                     if (retorno == true)
