@@ -112,7 +112,7 @@ namespace ControledeVendas
             Btn_Atualizar.Visible = true;
 
             Entidades.Produtos prod = new Entidades.Produtos();
-            prod.produto = txtProduto.Value;
+            prod.id = Convert.ToInt32(txtProduto.Value);
 
             var retorno = DataBaseService.ConsultaProduto(prod);
 

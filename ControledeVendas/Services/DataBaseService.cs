@@ -22,7 +22,7 @@ namespace ControledeVendas.Services
             using (SqlConnection connection = new SqlConnection(conn)) 
             {
                 Entidades.Produtos produtos = new Entidades.Produtos();
-                 var query = @" select * from Categoria where Nome ='"+ prod.produto+"'";
+                 var query = @" select * from Categoria where ID ="+ prod.id+"";
                 connection.Open();
                 
                 try
@@ -82,7 +82,7 @@ namespace ControledeVendas.Services
             using (SqlConnection connection = new SqlConnection(conn))
             {
 
-                var query = @" select * from Categoria where Nome ='" + produto + "'";
+                var query = @" select * from Categoria where ID =" + produto + "";
                 connection.Open();
 
                 try
@@ -132,7 +132,7 @@ namespace ControledeVendas.Services
             {
                 Entidades.Produtos produto = new Entidades.Produtos();
 
-                var query = @"update Produto set produto='" + prod.produto + "' where id="+ prod.id+ "";
+                var query = @"update categoria set nome='" + prod.produto + "' where id="+ prod.id+ "";
                 connection.Open();
 
                 try

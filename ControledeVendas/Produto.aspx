@@ -39,7 +39,7 @@
                 <div class="containerTable">
 
                     <div class="form-group col-md-11 col-sm-11 col-xs-11 input-group">
-                        <input type="text" class="form-control" placeholder="Consulta Produto" id="txtProduto" runat="server">
+                        <input type="text" class="form-control" placeholder="Consulta Codigo" id="txtProduto" runat="server">
                         <div class="input-group-btn">
                             <asp:Button ID="Btn_Consultar" class="btn btn-primary" runat="server" Text="Consultar" OnClick="Btn_Consultar_Click" />
                         </div>
