@@ -75,8 +75,8 @@ namespace ControledeVendas
             {
                 DropPago.DataBind();
             }
-            DropPago.Items.Insert(0, new ListItem("--Selecione--", "0"));
-            DropPago.SelectedIndex = 0;
+            //DropPago.Items.Insert(0, new ListItem("--Selecione--", "0"));
+            //DropPago.SelectedIndex = 0;
         }
         public void ValoresProduto()
         {
@@ -90,8 +90,8 @@ namespace ControledeVendas
             {
                 DropProduto.DataBind();
             }
-            DropProduto.Items.Insert(0, new ListItem("--Selecione--", "0"));
-            DropProduto.SelectedIndex = 0;
+            //DropProduto.Items.Insert(0, new ListItem("--Selecione--", "0"));
+            //DropProduto.SelectedIndex = 0;
         }
         protected void Btn_Editar_Click(object sender, EventArgs e)
         {
@@ -144,13 +144,14 @@ namespace ControledeVendas
                 if (valida == true)
                 {
                     Entidades.Vendas vendas = new Entidades.Vendas();
+                    var TESTE = DropProduto.SelectedItem;
 
                     vendas.Data = Convert.ToDateTime(txtData.Value);
-                    vendas.produtoid =Convert.ToInt32(DropProduto.SelectedIndex);
+                    vendas.produtoid =Convert.ToInt32(DropProduto.SelectedValue);
                     vendas.Cliente = txtCliente.Value;
                     vendas.Quant = txtQuantidade.Value;
                     vendas.precoTotal = txtValor.Value;
-                    vendas.Pago = Convert.ToInt32(DropPago.SelectedIndex);
+                    vendas.Pago = Convert.ToInt32(DropPago.SelectedValue);
 
                     var retorno = DataBaseService.InsertVendas(vendas);
                     if (retorno == true)
@@ -163,8 +164,9 @@ namespace ControledeVendas
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Erro: " + ex + "')</script>");
 
             }
         }

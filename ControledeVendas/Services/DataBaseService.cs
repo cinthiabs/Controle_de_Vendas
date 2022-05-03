@@ -554,7 +554,7 @@ namespace ControledeVendas.Services
                 precoTotal = precoTotal.Replace(',', '.');
            
 
-                var query = @"insert into Vendas(data, produto, Cliente,Quant,precoTotal,pago)values('" + data + "'," + vend.produtoid + ",'" + vend.Cliente + "','" + vend.Quant + "'," + precoTotal + ","+vend.Pago+")";
+                var query = @"insert into Vendas(data, produtoID, Cliente,Quant,precoTotal,pago)values('" + data + "'," + vend.produtoid + ",'" + vend.Cliente + "','" + vend.Quant + "'," + precoTotal + ","+vend.Pago+")";
                 connection.Open();
 
                 try
