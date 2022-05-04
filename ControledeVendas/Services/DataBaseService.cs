@@ -614,7 +614,7 @@ namespace ControledeVendas.Services
         {
            
             string DataIni = dataIni.ToString("yyyy-dd-MM");
-            string Datafim = dataIni.ToString("yyyy-dd-MM");
+            string Datafim = dataFim.ToString("yyyy-dd-MM");
 
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
