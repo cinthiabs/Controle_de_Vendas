@@ -15,6 +15,15 @@ namespace ControledeVendas
     {
 
         /// <summary>
+        /// Controle DropRelatorio.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropRelatorio;
+
+        /// <summary>
         /// Controle txtInicio.
         /// </summary>
         /// <remarks>
@@ -33,12 +42,12 @@ namespace ControledeVendas
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtFinal;
 
         /// <summary>
-        /// Controle Btn_Atualizar.
+        /// Controle Btn_Consultar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_Atualizar;
+        protected global::System.Web.UI.WebControls.Button Btn_Consultar;
     }
 }

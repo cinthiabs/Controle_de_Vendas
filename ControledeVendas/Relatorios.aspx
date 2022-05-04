@@ -43,13 +43,10 @@
             <h5>Filtros</h5>
             <div class="BodyFIltro">
 
-                <div class="form-group col-md-4">
-                    <label for="txtProduto">Relatório</label>
-
-                    <select name="relatorio" id="relatorio" class="form-control">
-                        <option value="1">Relatório de Compras</option>
-                        <option value="2">Relatório de Vendas</option>
-                    </select>
+                <div class="form-group col-md-4">    
+                    <label for="txtrelatorio">Relatório</label>
+                      <asp:DropDownList ID="DropRelatorio" runat="server" BackColor="White" class="form-control">
+                        </asp:DropDownList>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="txtInicio">Data Inicio</label>
@@ -60,7 +57,7 @@
                     <input type="datetime-local" class="form-control" id="txtFinal" runat="server">
                 </div>
                 <div class="form-group col-md-1 combo">
-                    <asp:Button ID="Btn_Atualizar" class="btn btn-primary" runat="server" Text="Consultar" />
+                    <asp:Button ID="Btn_Consultar" class="btn btn-primary" runat="server" Text="Consultar" OnClick="Btn_Consultar_Click" />
                 </div>
             </div>
         </div>

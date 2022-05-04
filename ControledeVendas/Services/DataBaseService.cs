@@ -610,5 +610,33 @@ namespace ControledeVendas.Services
             }
 
         }
+        public static DataTable RelatorioVendas(DateTime dataIni, DateTime dataFim)
+        {
+           
+            string DataIni = dataIni.ToString("yyyy-dd-MM");
+            string Datafim = dataIni.ToString("yyyy-dd-MM");
+
+            DataTable dtLista = new DataTable();
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                var query = @"SPS_RELATORIOVENDAS '" + DataIni + "','"+ Datafim + "'";
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    return dtLista;
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+
+        }
     }
 }

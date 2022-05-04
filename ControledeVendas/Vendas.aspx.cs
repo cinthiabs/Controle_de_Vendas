@@ -75,8 +75,7 @@ namespace ControledeVendas
             {
                 DropPago.DataBind();
             }
-            //DropPago.Items.Insert(0, new ListItem("--Selecione--", "0"));
-            //DropPago.SelectedIndex = 0;
+
         }
         public void ValoresProduto()
         {
@@ -90,8 +89,7 @@ namespace ControledeVendas
             {
                 DropProduto.DataBind();
             }
-            //DropProduto.Items.Insert(0, new ListItem("--Selecione--", "0"));
-            //DropProduto.SelectedIndex = 0;
+
         }
         protected void Btn_Editar_Click(object sender, EventArgs e)
         {
