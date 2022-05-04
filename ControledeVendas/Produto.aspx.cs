@@ -62,6 +62,7 @@ namespace ControledeVendas
         }        
         protected void Btn_Adicionar_Click(object sender, EventArgs e)
         {
+            txtProduto.Value = "";
             PanelPrincipal.Visible = false;
             PanelSegundo.Visible = true;
             Btn_Atualizar.Visible = false;

@@ -107,7 +107,7 @@ namespace ControledeVendas.Services
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
-                string query = "SELECT top 5 * FROM Categoria";
+                string query = "SELECT * FROM Categoria";
                 connection.Open();
 
                 try
