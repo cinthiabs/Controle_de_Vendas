@@ -28,7 +28,7 @@
 
             .headerFIltro h5 {
                 font-weight: bold;
-                padding-left: 5px;
+                padding-left: 15px;
             }
 
         .BodyFIltro {

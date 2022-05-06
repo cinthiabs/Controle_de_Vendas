@@ -1,6 +1,7 @@
 ﻿using ControledeVendas.Services;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -28,17 +29,19 @@ namespace ControledeVendas
                 ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe a Data Fim.')</script>");
                 retorno = false;
             }
+            DateTime inicio = DateTime.Parse(txtInicio.Value);
+            DateTime fim = DateTime.Parse(txtFinal.Value);
 
             if (DropRelatorio.SelectedIndex == 0)//vendas
             {
-                DateTime inicio = DateTime.Parse(txtInicio.Value);
-                DateTime fim = DateTime.Parse(txtFinal.Value);
+                DataTable dataTable = new DataTable();
+                dataTable = DataBaseService.RelatorioVendas(inicio, fim);
 
-                DataBaseService.RelatorioVendas(inicio, fim);
+               ExportarExcel.SalvarExcel(dataTable, 2, "RelatorioVendas");
             }
             else if (DropRelatorio.SelectedIndex == 1)//compras
             {
-                //teste
+                //DataBaseService.RelatorioCompra(inicio, fim);
             }
         }
         public void VDropRelatorio()
