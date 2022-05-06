@@ -38,13 +38,35 @@ namespace ControledeVendas
                 dataTable  = new DataTable();
                 dataTable = DataBaseService.RelatorioVendas(inicio, fim);
 
-               ExportarExcel.SalvarExcel(dataTable, 2, "RelatorioVendas");
+                bool valida =  ExportarExcel.SalvarExcel(dataTable, 1, "RelatorioVendas");
+                if(valida == true)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Relatorio exportado com sucesso.')</script>");
+
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Não foi possivel fazer a Exportação do Relatorio.')</script>");
+
+                }
+
             }
             else if (DropRelatorio.SelectedIndex == 1)//compras
             {
                 dataTable = new DataTable();
                 dataTable = DataBaseService.RelatorioCompra(inicio, fim);
-                ExportarExcel.SalvarExcel(dataTable, 2, "RelatorioCompra");
+                bool valida = ExportarExcel.SalvarExcel(dataTable, 1, "RelatorioCompra");
+                if (valida == true)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Relatorio exportado com sucesso.')</script>");
+
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Não foi possivel fazer a Exportação do Relatorio.')</script>");
+
+                }
+
             }
         }
         public void VDropRelatorio()

@@ -13,11 +13,10 @@ namespace ControledeVendas.Services
 {
     public class ExportarExcel
     {
-        public static void SalvarExcel(DataTable dt_ExpExcel, int Tipo, String filename)
+        public static bool SalvarExcel(DataTable dt_ExpExcel, int Tipo, String filename)
         {
-                if (Tipo == 1)
+                if (Tipo == 1) //CSV
                 {
-
                     Byte[] bCSV = Encoding.Unicode.GetBytes(ExportTCSVFile(dt_ExpExcel));
                     MemoryStream ms = new MemoryStream(bCSV);
 
@@ -34,13 +33,14 @@ namespace ControledeVendas.Services
                     oResponse.Flush();
                     oResponse.Close();
                     oResponse.End();
+                    return true;
+
                 }
 
-                else if (Tipo == 2)
+                else if (Tipo == 2) //xls
                 {
                    Byte[] dsSitEntrega = Encoding.Unicode.GetBytes(ExportTCSVFile(dt_ExpExcel));
                    MemoryStream ms = new MemoryStream(dsSitEntrega);
-                   
                     using (GridView gvconsulta = new GridView())
                     {
                         try
@@ -64,27 +64,27 @@ namespace ControledeVendas.Services
                                     gvconsulta.RenderControl(htw);
                                     oResponse.Write(sw.ToString());
                                     oResponse.End();
-                                    return;
+                                    return true;
                                 }
                                 else
                                 {
-                                    string erro = "Não foi possivel fazer a Exportação do Relatorio.";
-                                    return;
+                                    return false;
                                 }
                             }
                             else
                             {
-                                string erro = "Não foi possivel fazer a Exportação do Relatorio.";
-                                return;
+                                return false;
                             }
                         }
                         catch (Exception ex)
                         {
-                        throw new ArgumentException(ex.Message);
+
+                          throw new ArgumentException(ex.Message);
                         }
                     }
-                }                
-            }
+                }
+            return true;
+        }
 
         public  static string ExportTCSVFile(DataTable dtTable)
         {
