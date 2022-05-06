@@ -3,47 +3,77 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
    <style>
        .row{
-           padding-top: 40px;
+           padding-top: 50px;
            padding-bottom: 30px;
            margin-bottom: 30px;
            margin-left:40px;
        }
+ .main{
+    /*margin: auto;*/ /*centralizado*/
+}
+.content-section{
+    width:100%;
+    background-color: white;
+    padding: 5px;
+    margin-bottom: 10px;  
+    overflow: auto;/*foi adicionado por causa do float no cart*/
+}
+.card{
+    width:23%;
+   float: left;/*deixar imagen do lado da outra*/
+   margin: 6px;
+   padding: 60px 0 0 0;
+   background:#aea6f3;
+}
+
+.card h3{
+    width: 100%;
+    align-items:center;
+    display: block;
+}
+.card p{
+    margin: 0;
+    background-color:#808080;
+    color: white;
+    padding: 10px;
+    text-transform: uppercase;
+}
+.CardDetalhe{
+
+}
    </style>
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <div class="row">
+        <section class="content-section">
+            <div class="card">
+               <h3>Teste</h3>
+                <p>TOTAL DE COMPRAS</p>
+            </div>
+
+            <div class="card">
+               <h3>20</h3>
+                <p>TOTAL DE VENDAS</p>
+            </div>
+            <div class="card">
+               <h3>30</h3>
+                <p>QUANT. PÃES</p>
+            </div>
+             <div class="card">
+               <h3>30</h3>
+                <p>PENDENCIAS</p>
+            </div>   
+        </section>
+
+        <div class="Detalhe-Content">
+            <div class="cardDetalhe detalhe1">
+
+            </div>
+
+            <div class="cardDetalhe detalhe2">
+
+            </div>
+
+        </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
-    </div>
 
 </asp:Content>
