@@ -638,5 +638,35 @@ namespace ControledeVendas.Services
             }
 
         }
+
+        public static DataTable RelatorioCompra(DateTime dataIni, DateTime dataFim)
+        {
+
+            string DataIni = dataIni.ToString("yyyy-dd-MM");
+            string Datafim = dataFim.ToString("yyyy-dd-MM");
+
+            DataTable dtLista = new DataTable();
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                var query = @"SELECT ID AS ID, Data, Produto, Quant AS Quantidade, precoUnt AS 'Preço Unitário', precoTotal as 'Preco Total'";
+                    query += " FROM PRODUTO  WHERE Data BETWEEN'" + DataIni + "' AND '" + Datafim + "'";
+                connection.Open();
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    return dtLista;
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+
+        }
     }
 }

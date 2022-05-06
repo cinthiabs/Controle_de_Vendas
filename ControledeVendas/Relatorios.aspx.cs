@@ -11,6 +11,7 @@ namespace ControledeVendas
 {
     public partial class Relatorios : System.Web.UI.Page
     {
+        DataTable dataTable;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (DropRelatorio.SelectedValue == "")
@@ -34,14 +35,16 @@ namespace ControledeVendas
 
             if (DropRelatorio.SelectedIndex == 0)//vendas
             {
-                DataTable dataTable = new DataTable();
+                dataTable  = new DataTable();
                 dataTable = DataBaseService.RelatorioVendas(inicio, fim);
 
                ExportarExcel.SalvarExcel(dataTable, 2, "RelatorioVendas");
             }
             else if (DropRelatorio.SelectedIndex == 1)//compras
             {
-                //DataBaseService.RelatorioCompra(inicio, fim);
+                dataTable = new DataTable();
+                dataTable = DataBaseService.RelatorioCompra(inicio, fim);
+                ExportarExcel.SalvarExcel(dataTable, 2, "RelatorioCompra");
             }
         }
         public void VDropRelatorio()
