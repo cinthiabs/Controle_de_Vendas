@@ -25,7 +25,18 @@
    padding: 40px 0 0 0;
    background:#aea6f3;
 }
-
+.cardcolor{
+    background:#DC3545;
+}
+.cardcolor1{
+    background:#28A745;
+}
+.cardcolor2{
+    background:#FFC107;
+}
+.cardcolor3{
+    background:#007BFF;
+}
 .card h3{
     width: 100%;
     align-items:center;
@@ -51,20 +62,20 @@
    </style>
     <div class="row">
         <section class="content-section">
-            <div class="card">
+            <div class="card cardcolor2">
                <h3 id="TotalCompras" runat="server"></h3>
                 <p>TOTAL DE COMPRAS</p>
             </div>
 
-            <div class="card">
+            <div class="card cardcolor1">
                <h3 id="TotalVed" runat="server"></h3>
                 <p>TOTAL DE VENDAS</p>
             </div>
-            <div class="card">
+            <div class="card cardcolor3">
                <h3 id="TotalPaes" runat="server"></h3>
                 <p>QUANT. PÃES</p>
             </div>
-             <div class="card">
+             <div class="card cardcolor">
                <h3 id="TotalPend" runat="server"></h3>
                 <p>PENDENCIAS</p>
             </div>   
