@@ -56,9 +56,21 @@
     text-transform: uppercase;
     text-align:center;
 }
-.CardDetalhe{
-
+.cardDetalhe{
+   width:47%;
+   float: left;/*deixar imagen do lado da outra*/
+   margin-left: 10px;
+   padding: 20px;
+/**/   /*background:#e3e1fa;*/
 }
+.Detalhe-Content{
+   width:100%;
+/*    background-color: white;*/
+/*    padding: 5px;
+*/    /*margin-bottom: 10px;*/  
+    overflow: auto;/*foi adicionado por causa do float no cart*/
+}
+
    </style>
     <div class="row">
         <section class="content-section">
@@ -83,11 +95,65 @@
 
         <div class="Detalhe-Content">
             <div class="cardDetalhe detalhe1">
-
+                <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 9%;">ID</th>
+                        <th scope="col" style="width: 35%;">Data</th>
+                        <th scope="col" style="width: 20%;">Produto</th>
+                        <th scope="col" style="width: 18%;">Cliente</th>
+                        <th scope="col" style="width: 9%;">Quantidade</th>
+                        <th scope="col" style="width: 10%;">Valor</th>
+                        <th scope="col" style="width: 10%;">Pago</th>
+                        <th scope="col" style="width: 50%;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <asp:Repeater ID="Dados" runat="server">
+                        <ItemTemplate>
+                            <tr>
+                                <td><%# Eval("id") %></td>
+                                <td><%# Eval("Data") %></td>
+                                <td><%# Eval("nome") %></td>
+                                <td><%# Eval("Cliente") %></td>
+                                <td><%# Eval("Quant") %></td>
+                                <td><%# Eval("PrecoTotal") %></td>
+                                <td><%# Eval("descricao") %></td>
+                           </tr>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </tbody>
+            </table>
             </div>
 
             <div class="cardDetalhe detalhe2">
-
+                 <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 10%;">ID</th>
+                            <th scope="col"style="width: 30%;">Data</th>
+                            <th scope="col"style="width: 10%;">Quantidade</th>
+                            <th scope="col"style="width: 32%;">Produto</th>
+                            <th scope="col"style="width: 10%;">Unitário</th>
+                            <th scope="col"style="width: 10%;">Total</th>
+                            <th scope="col" style="width:60%;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <asp:Repeater ID="DadosCompra" runat="server">
+                          <ItemTemplate>
+                        <tr>
+                            <td><%# Eval("id") %></td>
+                            <td><%# Eval("Data") %></td>
+                            <td><%# Eval("Quant") %></td>
+                            <td><%# Eval("Produto") %></td>
+                            <td><%# Eval("PrecoUnt") %></td>
+                            <td><%# Eval("PrecoTotal") %></td>
+                        </tr>
+                       </ItemTemplate>
+                    </asp:Repeater>
+                    </tbody>
+                </table>
             </div>
 
         </div>
