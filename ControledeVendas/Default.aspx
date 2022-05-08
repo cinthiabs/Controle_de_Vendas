@@ -16,7 +16,7 @@
     background-color: white;
     padding: 5px;
     margin-bottom: 10px;  
-    overflow: auto;/*foi adicionado por causa do float no cart*/
+    overflow: auto;/*foi adicionado por causa do float no card*/
 }
 .card{
     width:23%;
@@ -60,15 +60,11 @@
    width:47%;
    float: left;/*deixar imagen do lado da outra*/
    margin-left: 10px;
-   padding: 20px;
-/**/   /*background:#e3e1fa;*/
+/*   background:#D3D3D3;*/
 }
 .Detalhe-Content{
    width:100%;
-/*    background-color: white;*/
-/*    padding: 5px;
-*/    /*margin-bottom: 10px;*/  
-    overflow: auto;/*foi adicionado por causa do float no cart*/
+   overflow: auto;/*foi adicionado por causa do float no card*/
 }
 
    </style>
@@ -98,14 +94,13 @@
                 <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col" style="width: 9%;">ID</th>
-                        <th scope="col" style="width: 35%;">Data</th>
-                        <th scope="col" style="width: 20%;">Produto</th>
-                        <th scope="col" style="width: 18%;">Cliente</th>
-                        <th scope="col" style="width: 9%;">Quantidade</th>
-                        <th scope="col" style="width: 10%;">Valor</th>
-                        <th scope="col" style="width: 10%;">Pago</th>
-                        <th scope="col" style="width: 50%;"></th>
+                        <th scope="col" style="width: 9%;" class="bg-info">ID</th>
+                        <th scope="col" style="width: 35%;" class="bg-info">Data</th>
+                        <th scope="col" style="width: 20%;"class="bg-info">Produto</th>
+                        <th scope="col" style="width: 18%;"class="bg-info">Cliente</th>
+                        <th scope="col" style="width: 9%;"class="bg-info">Quantidade</th>
+                        <th scope="col" style="width: 10%;"class="bg-info">Valor</th>
+                        <th scope="col" style="width: 10%;"class="bg-info">Pago</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,13 +125,12 @@
                  <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col" style="width: 10%;">ID</th>
-                            <th scope="col"style="width: 30%;">Data</th>
-                            <th scope="col"style="width: 10%;">Quantidade</th>
-                            <th scope="col"style="width: 32%;">Produto</th>
-                            <th scope="col"style="width: 10%;">Unitário</th>
-                            <th scope="col"style="width: 10%;">Total</th>
-                            <th scope="col" style="width:60%;"></th>
+                            <th scope="col" style="width: 10%;"class="bg-info">ID</th>
+                            <th scope="col"style="width: 30%;"class="bg-info">Data</th>
+                            <th scope="col"style="width: 10%;"class="bg-info">Quantidade</th>
+                            <th scope="col"style="width: 32%;"class="bg-info">Produto</th>
+                            <th scope="col"style="width: 10%;"class="bg-info">Unitário</th>
+                            <th scope="col"style="width: 10%;"class="bg-info">Total</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -155,7 +149,6 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
 
