@@ -22,7 +22,7 @@
     width:23%;
    float: left;/*deixar imagen do lado da outra*/
    margin: 6px;
-   padding: 60px 0 0 0;
+   padding: 40px 0 0 0;
    background:#aea6f3;
 }
 
@@ -30,6 +30,12 @@
     width: 100%;
     align-items:center;
     display: block;
+    color:white;
+    text-align:center;
+    font-weight:600;
+    font-size:35px;
+    padding-bottom: 20px;
+
 }
 .card p{
     margin: 0;
@@ -37,6 +43,7 @@
     color: white;
     padding: 10px;
     text-transform: uppercase;
+    text-align:center;
 }
 .CardDetalhe{
 
