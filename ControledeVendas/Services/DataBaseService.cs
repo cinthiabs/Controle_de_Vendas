@@ -552,7 +552,6 @@ namespace ControledeVendas.Services
                 string data = vend.Data.ToString("yyyy-dd-MM");
                 var precoTotal = vend.precoTotal;
                 precoTotal = precoTotal.Replace(',', '.');
-           
 
                 var query = @"insert into Vendas(data, produtoID, Cliente,Quant,precoTotal,pago)values('" + data + "'," + vend.produtoid + ",'" + vend.Cliente + "','" + vend.Quant + "'," + precoTotal + ","+vend.Pago+")";
                 connection.Open();
@@ -668,5 +667,130 @@ namespace ControledeVendas.Services
             }
 
         }
+        public static Totais TotalPend()
+        {
+            DataTable dtLista = new DataTable();
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                Totais total = new Totais();
+
+                var query = @"select count(pago) as TotalPend from vendas where pago <> 1 and data >=getdate() -60";
+                connection.Open();
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    if (dtLista.Rows.Count >= 0)
+                    {
+                        total.TotalPend = dtLista.Rows[0]["TotalPend"].ToString();
+                        return total;
+                    }
+                    return total;
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+
+        }
+        public static Totais TotalVed()
+        {
+            Totais total = new Totais();
+
+            DataTable dtLista = new DataTable();
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                var query = @"declare @soma float";
+                query += " set @soma = (select sum(precoTotal) from vendas where data >=getdate() -60) ";
+                query += " select FORMAT(@soma, 'C', 'pt-br') as total";
+                connection.Open();
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    if (dtLista.Rows.Count >= 0)
+                    {
+                        total.TotalVed = dtLista.Rows[0]["total"].ToString();
+                        return total;
+                    }
+                    return total;
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+
+        }
+        public static Totais TotalPaes()
+        {
+            Totais total = new Totais();
+            DataTable dtLista = new DataTable();
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                var query = @"select sum(quant)as quant from vendas where data >=getdate() -60";
+                connection.Open();
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    if (dtLista.Rows.Count >= 0)
+                    {
+                        total.TotalPaes = dtLista.Rows[0]["quant"].ToString();
+                        return total;
+                    }
+                    return total;
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+
+        }
+        public static Totais TotalCompras()
+        {
+            Totais total = new Totais();
+            DataTable dtLista = new DataTable();
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                var query = @"declare @soma float";
+                query += " set @soma = (select sum(precoTotal) from produto where data >=getdate() -60) ";
+                query += " select FORMAT(@soma, 'C', 'pt-br') as total";
+                connection.Open();
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    if (dtLista.Rows.Count >= 0)
+                    {
+                        total.TotalCompras = dtLista.Rows[0]["total"].ToString();
+                        return total;
+                    }
+                    return total;
+                }
+                catch (Exception e)
+                {
+
+                    throw new ArgumentException(e.Message);
+                    
+
+                }
+            }
+
+        }
     }
+   
 }

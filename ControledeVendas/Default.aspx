@@ -45,20 +45,20 @@
     <div class="row">
         <section class="content-section">
             <div class="card">
-               <h3>Teste</h3>
+               <h3 id="TotalCompras" runat="server"></h3>
                 <p>TOTAL DE COMPRAS</p>
             </div>
 
             <div class="card">
-               <h3>20</h3>
+               <h3 id="TotalVed" runat="server"></h3>
                 <p>TOTAL DE VENDAS</p>
             </div>
             <div class="card">
-               <h3>30</h3>
+               <h3 id="TotalPaes" runat="server"></h3>
                 <p>QUANT. PÃES</p>
             </div>
              <div class="card">
-               <h3>30</h3>
+               <h3 id="TotalPend" runat="server"></h3>
                 <p>PENDENCIAS</p>
             </div>   
         </section>

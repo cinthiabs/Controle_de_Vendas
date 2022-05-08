@@ -188,6 +188,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Entidades\Totais.cs" />
     <Compile Include="Produto.aspx.cs">
       <DependentUpon>Produto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
