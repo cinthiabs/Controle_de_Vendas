@@ -147,7 +147,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Movimentações.aspx" />
     <Content Include="Compras.aspx" />
     <Content Include="Relatorios.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -208,13 +207,6 @@
     <Compile Include="Entidades\Vendas.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Movimentações.aspx.cs">
-      <DependentUpon>Movimentações.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Movimentações.aspx.designer.cs">
-      <DependentUpon>Movimentações.aspx</DependentUpon>
     </Compile>
     <Compile Include="Compras.aspx.cs">
       <DependentUpon>Compras.aspx</DependentUpon>
