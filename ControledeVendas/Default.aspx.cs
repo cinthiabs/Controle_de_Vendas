@@ -17,34 +17,107 @@ namespace ControledeVendas
         {
             TableConsulta();
             TableCompra();
+            FiltroData();
+            if (DropRelatorio.SelectedValue == "")
+                VDropRelatorio();
+                FiltroData();
 
+
+
+        }
+
+        public void FiltroData()
+        {
             Totais total = new Totais();
 
-            total = DataBaseService.TotalCompras();
-            if (total != null)
+            if (DropRelatorio.SelectedIndex == 0)//15 dias
             {
-                TotalCompras.InnerText = total.TotalCompras;
+                total = DataBaseService.TotalCompras(15);
+                if (total != null)
+                {
+                    TotalCompras.InnerText = total.TotalCompras;
 
+                }
+                total = DataBaseService.TotalVed(15);
+                if (total != null)
+                {
+                    TotalVed.InnerText = total.TotalVed;
+
+                }
+                total = DataBaseService.TotalPaes(15);
+                if (total != null)
+                {
+                    TotalPaes.InnerText = total.TotalPaes;
+
+                }
+                total = DataBaseService.TotalPend(15);
+                if (total != null)
+                {
+                    TotalPend.InnerText = total.TotalPend;
+
+                }
             }
-            total = DataBaseService.TotalVed();
-            if (total != null)
+            else if (DropRelatorio.SelectedIndex == 1)//30 dias
             {
-                TotalVed.InnerText = total.TotalVed;
+                total = DataBaseService.TotalCompras(30);
+                if (total != null)
+                {
+                    TotalCompras.InnerText = total.TotalCompras;
 
+                }
+                total = DataBaseService.TotalVed(30);
+                if (total != null)
+                {
+                    TotalVed.InnerText = total.TotalVed;
+
+                }
+                total = DataBaseService.TotalPaes(30);
+                if (total != null)
+                {
+                    TotalPaes.InnerText = total.TotalPaes;
+
+                }
+                total = DataBaseService.TotalPend(30);
+                if (total != null)
+                {
+                    TotalPend.InnerText = total.TotalPend;
+
+                }
             }
-            total = DataBaseService.TotalPaes();
-            if (total != null)
+            else if (DropRelatorio.SelectedIndex == 2)//60 dias
             {
-                TotalPaes.InnerText = total.TotalPaes;
+                total = DataBaseService.TotalCompras(60);
+                if (total != null)
+                {
+                    TotalCompras.InnerText = total.TotalCompras;
 
+                }
+                total = DataBaseService.TotalVed(60);
+                if (total != null)
+                {
+                    TotalVed.InnerText = total.TotalVed;
+
+                }
+                total = DataBaseService.TotalPaes(60);
+                if (total != null)
+                {
+                    TotalPaes.InnerText = total.TotalPaes;
+
+                }
+                total = DataBaseService.TotalPend(60);
+                if (total != null)
+                {
+                    TotalPend.InnerText = total.TotalPend;
+
+                }
             }
-            total = DataBaseService.TotalPend();
-            if (total != null)
+        }
+        protected void DropRelatorio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(DropRelatorio.SelectedValue))
             {
-                TotalPend.InnerText = total.TotalPend;
-
+                FiltroData();
             }
-
         }
         public void TableConsulta()
         {
@@ -57,6 +130,17 @@ namespace ControledeVendas
             Data = DataBaseService.ConsultaTableCompra();
             DadosCompra.DataSource = Data;
             DadosCompra.DataBind();
+        }
+        public void VDropRelatorio()
+        {
+            DropRelatorio.Items.Insert(0, new ListItem("15 Dias", "0"));
+            DropRelatorio.SelectedIndex = 0;
+
+            DropRelatorio.Items.Insert(1, new ListItem("30 Dias", "1"));
+            DropRelatorio.SelectedIndex = 1;
+
+            DropRelatorio.Items.Insert(2, new ListItem("60 Dias", "2"));
+            DropRelatorio.SelectedIndex = 2;
         }
     }
 }

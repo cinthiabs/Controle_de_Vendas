@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
    <style>
        .row{
-           padding-top: 50px;
+           padding-top: 10px;
            padding-bottom: 30px;
            margin-bottom: 30px;
            margin-left:40px;
@@ -14,7 +14,7 @@
 .content-section{
     width:100%;
     background-color: white;
-    padding: 5px;
+    padding: 2px;
     margin-bottom: 10px;  
     overflow: auto;/*foi adicionado por causa do float no card*/
 }
@@ -66,9 +66,17 @@
    width:100%;
    overflow: auto;/*foi adicionado por causa do float no card*/
 }
+ .combo {
+      text-align: right;
+ }
 
    </style>
     <div class="row">
+        <div class="form-group col-md-2 col-sm-2 col-xs-2">
+         <asp:DropDownList ID="DropRelatorio" runat="server" BackColor="White" class="form-control" AutoPostBack="true" OnSelectedIndexChanged="DropRelatorio_SelectedIndexChanged">
+           </asp:DropDownList>
+        </div>
+        
         <section class="content-section">
             <div class="card cardcolor2">
                <h3 id="TotalCompras" runat="server"></h3>

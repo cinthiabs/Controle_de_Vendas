@@ -667,14 +667,14 @@ namespace ControledeVendas.Services
             }
 
         }
-        public static Totais TotalPend()
+        public static Totais TotalPend(int dias)
         {
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
                 Totais total = new Totais();
 
-                var query = @"select count(pago) as TotalPend from vendas where pago <> 1 and data >=getdate() -30";
+                var query = @"select count(pago) as TotalPend from vendas where pago <> 1 and data >=getdate() -" + dias + "";
                 connection.Open();
                 try
                 {
@@ -697,7 +697,7 @@ namespace ControledeVendas.Services
             }
 
         }
-        public static Totais TotalVed()
+        public static Totais TotalVed(int dias)
         {
             Totais total = new Totais();
 
@@ -705,7 +705,7 @@ namespace ControledeVendas.Services
             using (SqlConnection connection = new SqlConnection(conn))
             {
                 var query = @"declare @soma float";
-                query += " set @soma = (select sum(precoTotal) from vendas where data >=getdate() -30) ";
+                query += " set @soma = (select sum(precoTotal) from vendas where data >=getdate() -" + dias + ") ";
                 query += " select FORMAT(@soma, 'C', 'pt-br') as total";
                 connection.Open();
                 try
@@ -729,13 +729,13 @@ namespace ControledeVendas.Services
             }
 
         }
-        public static Totais TotalPaes()
+        public static Totais TotalPaes( int dias)
         {
             Totais total = new Totais();
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
-                var query = @"select sum(quant)as quant from vendas where data >=getdate() -30";
+                var query = @"select sum(quant)as quant from vendas where data >=getdate() -" + dias + "";
                 connection.Open();
                 try
                 {
@@ -758,14 +758,14 @@ namespace ControledeVendas.Services
             }
 
         }
-        public static Totais TotalCompras()
+        public static Totais TotalCompras(int dias)
         {
             Totais total = new Totais();
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
                 var query = @"declare @soma float";
-                query += " set @soma = (select sum(precoTotal) from produto where data >=getdate() -30) ";
+                query += " set @soma = (select sum(precoTotal) from produto where data >=getdate() -"+dias+") ";
                 query += " select FORMAT(@soma, 'C', 'pt-br') as total";
                 connection.Open();
                 try
