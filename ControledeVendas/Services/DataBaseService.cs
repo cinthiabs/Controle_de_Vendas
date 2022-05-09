@@ -382,7 +382,7 @@ namespace ControledeVendas.Services
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
-                string query = "SELECT top 5 * FROM Produto";
+                string query = "SELECT top 5 * FROM Produto ORDER BY DATA DESC";
                 connection.Open();
 
                 try
@@ -590,7 +590,7 @@ namespace ControledeVendas.Services
             {
                 string query = "SELECT top 5 v.id,data,c.Nome, Cliente,Quant,precoTotal,p.descricao FROM Vendas v";
                 query += " inner join Categoria c on v.Produtoid = c.id ";
-                query += " inner join pago p on v.Pago = p.id";
+                query += " inner join pago p on v.Pago = p.id ORDER BY DATA DESC";
                 connection.Open();
 
                 try
@@ -674,7 +674,7 @@ namespace ControledeVendas.Services
             {
                 Totais total = new Totais();
 
-                var query = @"select count(pago) as TotalPend from vendas where pago <> 1 and data >=getdate() -60";
+                var query = @"select count(pago) as TotalPend from vendas where pago <> 1 and data >=getdate() -30";
                 connection.Open();
                 try
                 {
@@ -705,7 +705,7 @@ namespace ControledeVendas.Services
             using (SqlConnection connection = new SqlConnection(conn))
             {
                 var query = @"declare @soma float";
-                query += " set @soma = (select sum(precoTotal) from vendas where data >=getdate() -60) ";
+                query += " set @soma = (select sum(precoTotal) from vendas where data >=getdate() -30) ";
                 query += " select FORMAT(@soma, 'C', 'pt-br') as total";
                 connection.Open();
                 try
@@ -735,7 +735,7 @@ namespace ControledeVendas.Services
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
-                var query = @"select sum(quant)as quant from vendas where data >=getdate() -60";
+                var query = @"select sum(quant)as quant from vendas where data >=getdate() -30";
                 connection.Open();
                 try
                 {
@@ -765,7 +765,7 @@ namespace ControledeVendas.Services
             using (SqlConnection connection = new SqlConnection(conn))
             {
                 var query = @"declare @soma float";
-                query += " set @soma = (select sum(precoTotal) from produto where data >=getdate() -60) ";
+                query += " set @soma = (select sum(precoTotal) from produto where data >=getdate() -30) ";
                 query += " select FORMAT(@soma, 'C', 'pt-br') as total";
                 connection.Open();
                 try
