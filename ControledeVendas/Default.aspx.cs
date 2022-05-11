@@ -21,9 +21,6 @@ namespace ControledeVendas
             if (DropRelatorio.SelectedValue == "")
                 VDropRelatorio();
                 FiltroData();
-
-
-
         }
 
         public void FiltroData()

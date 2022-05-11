@@ -783,10 +783,7 @@ namespace ControledeVendas.Services
                 }
                 catch (Exception e)
                 {
-
-                    throw new ArgumentException(e.Message);
-                    
-
+                    throw new ArgumentException(e.Message);                    
                 }
             }
 
