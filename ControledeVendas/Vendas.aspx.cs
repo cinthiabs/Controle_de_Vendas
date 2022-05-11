@@ -25,7 +25,7 @@ namespace ControledeVendas
         }
         public void TableConsulta()
         {
-            Data = DataBaseService.ConsultaTableVendas();
+            Data = DataBaseService.ConsultaTableVendas(30);
             Dados.DataSource = Data;
             Dados.DataBind();
         }
@@ -93,7 +93,22 @@ namespace ControledeVendas
         }
         protected void Btn_Editar_Click(object sender, EventArgs e)
         {
+            Adicionar.Visible = false;
+            PanelPrincipal.Visible = false;
+            PanelSegundo.Visible = true;
+            Btn_Atualizar.Visible = true;
 
+            var retorno = DataBaseService.ConsultaVendas(txtid.Value);
+
+            if (retorno != null)
+            {
+                //txtid.Value = Convert.ToString(retorno.id);
+                //txtProduto.Value = retorno.produto;
+                //txtData.Value = retorno.Data.ToString("yyyy-MM-dd");
+                //txtQuantidade.Value = retorno.Quant;
+                //txtCliente.Value = retorno.cl;
+                //txtPrecoTotal.Value = retorno.precoTotal;
+            }
         }
 
         protected void Btn_Excluir_Click(object sender, EventArgs e)

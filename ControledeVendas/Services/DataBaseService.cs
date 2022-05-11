@@ -376,13 +376,13 @@ namespace ControledeVendas.Services
             }
 
         }
-        public static DataTable ConsultaTableCompra()
+        public static DataTable ConsultaTableCompra(int dias)
         {
 
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
-                string query = "SELECT top 5 * FROM Produto ORDER BY DATA DESC";
+                string query = "SELECT top 5 * FROM Produto where data >= getdate()-"+dias+" ORDER BY DATA DESC";
                 connection.Open();
 
                 try
@@ -582,7 +582,7 @@ namespace ControledeVendas.Services
                 }
             }
         }
-        public static DataTable ConsultaTableVendas()
+        public static DataTable ConsultaTableVendas(int dias)
         {
 
             DataTable dtLista = new DataTable();
@@ -590,7 +590,7 @@ namespace ControledeVendas.Services
             {
                 string query = "SELECT top 5 v.id,data,c.Nome, Cliente,Quant,precoTotal,p.descricao FROM Vendas v";
                 query += " inner join Categoria c on v.Produtoid = c.id ";
-                query += " inner join pago p on v.Pago = p.id ORDER BY DATA DESC";
+                query += " inner join pago p on v.Pago = p.id  where data>=getdate()-"+dias+" ORDER BY DATA DESC";
                 connection.Open();
 
                 try

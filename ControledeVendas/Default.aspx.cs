@@ -15,8 +15,7 @@ namespace ControledeVendas
         DataTable Data = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
-            TableConsulta();
-            TableCompra();
+           
             FiltroData();
             if (DropRelatorio.SelectedValue == "")
                 VDropRelatorio();
@@ -29,6 +28,9 @@ namespace ControledeVendas
 
             if (DropRelatorio.SelectedIndex == 0)//15 dias
             {
+                TableConsulta(15);
+                TableCompra(15);
+
                 total = DataBaseService.TotalCompras(15);
                 if (total != null)
                 {
@@ -53,9 +55,12 @@ namespace ControledeVendas
                     TotalPend.InnerText = total.TotalPend;
 
                 }
+
             }
             else if (DropRelatorio.SelectedIndex == 1)//30 dias
             {
+                TableConsulta(30);
+                TableCompra(30);
                 total = DataBaseService.TotalCompras(30);
                 if (total != null)
                 {
@@ -83,6 +88,8 @@ namespace ControledeVendas
             }
             else if (DropRelatorio.SelectedIndex == 2)//60 dias
             {
+                TableConsulta(60);
+                TableCompra(60);
                 total = DataBaseService.TotalCompras(60);
                 if (total != null)
                 {
@@ -116,15 +123,15 @@ namespace ControledeVendas
                 FiltroData();
             }
         }
-        public void TableConsulta()
+        public void TableConsulta(int dias)
         {
-            Data = DataBaseService.ConsultaTableVendas();
+            Data = DataBaseService.ConsultaTableVendas(dias);
             Dados.DataSource = Data;
             Dados.DataBind();
         }
-        public void TableCompra()
+        public void TableCompra(int dias)
         {
-            Data = DataBaseService.ConsultaTableCompra();
+            Data = DataBaseService.ConsultaTableCompra(dias);
             DadosCompra.DataSource = Data;
             DadosCompra.DataBind();
         }

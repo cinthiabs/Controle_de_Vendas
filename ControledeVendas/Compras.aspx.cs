@@ -25,7 +25,7 @@ namespace ControledeVendas
         }
         public void TableConsulta()
         {
-            Data = DataBaseService.ConsultaTableCompra();
+            Data = DataBaseService.ConsultaTableCompra(30);
             Dados.DataSource = Data;
             Dados.DataBind();
         }
