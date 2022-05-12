@@ -57,10 +57,17 @@ namespace ControledeVendas
         protected void Btn_Consultar_Click(object sender, EventArgs e)
         {
             bool valida = ValidaCampos();
-            if (valida == true)
+            if (txtid.Value != "")
             {
-                Vendas vendas = new Vendas();
-               
+                Entidades.Vendas vend = new Entidades.Vendas();
+                vend.id = Convert.ToInt32(txtid.Value);
+
+                var retorno = DataBaseService.ConsultaVendas(vend);
+                if (retorno != null)
+                {
+                    Dados.DataSource = retorno;
+                    Dados.DataBind();
+                }
             }
         }
         public void ValoresPagamento()
@@ -93,21 +100,25 @@ namespace ControledeVendas
         }
         protected void Btn_Editar_Click(object sender, EventArgs e)
         {
+            Entidades.Vendas vend = new Entidades.Vendas();
+            vend.id = Convert.ToInt32(txtid.Value);
+
             Adicionar.Visible = false;
             PanelPrincipal.Visible = false;
             PanelSegundo.Visible = true;
             Btn_Atualizar.Visible = true;
 
-            var retorno = DataBaseService.ConsultaVendas(txtid.Value);
+            var retorno = DataBaseService.ConsultaVendas(vend);
 
             if (retorno != null)
             {
-                //txtid.Value = Convert.ToString(retorno.id);
-                //txtProduto.Value = retorno.produto;
-                //txtData.Value = retorno.Data.ToString("yyyy-MM-dd");
-                //txtQuantidade.Value = retorno.Quant;
-                //txtCliente.Value = retorno.cl;
-                //txtPrecoTotal.Value = retorno.precoTotal;
+                txtid.Value = Convert.ToString(retorno.id);
+                DropProduto.SelectedIndex = retorno.produtoid;
+                txtData.Value = retorno.Data.ToString("yyyy-MM-dd");
+                txtQuantidade.Value = retorno.Quant;
+                txtCliente.Value = retorno.Cliente;
+                txtValor.Value = retorno.precoTotal;
+                DropProduto.SelectedIndex = retorno.Pago;
             }
         }
 
@@ -116,7 +127,7 @@ namespace ControledeVendas
             Entidades.Vendas vend = new Entidades.Vendas();
             vend.id = Convert.ToInt32(txtid.Value);
 
-            var retorno = DataBaseService.ConsultaVendas(txtid.Value);
+            var retorno = DataBaseService.ConsultaVendas(vend);
             if (retorno != null)
             {
                 var retornoExcluir = DataBaseService.ExcluirVendas(vend);

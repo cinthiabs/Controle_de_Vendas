@@ -449,13 +449,13 @@ namespace ControledeVendas.Services
             }
         }
 
-        public static DataTable ConsultaVendas(string id)
+        public static Entidades.Vendas ConsultaVendas(Entidades.Vendas vend)
         {
-
+            Entidades.Vendas vendas = new Entidades.Vendas();
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
-                var query = @"select * from vendas where id = " + id;
+                var query = @"select * from vendas where id = " + vend.id;
                 connection.Open();
 
                 try
@@ -464,7 +464,19 @@ namespace ControledeVendas.Services
 
                     SqlDataAdapter sqlData = new SqlDataAdapter(command);
                     sqlData.Fill(dtLista);
-                    return dtLista;
+                    if (dtLista.Rows.Count >= 0)
+                    {
+                        vendas.id = Convert.ToInt32(dtLista.Rows[0]["id"].ToString());
+                        vendas.Data = Convert.ToDateTime(dtLista.Rows[0]["data"]);
+                        vendas.produtoid = Convert.ToInt32(dtLista.Rows[0]["produtoid"].ToString());
+                        vendas.Quant = dtLista.Rows[0]["quant"].ToString();
+                        vendas.precoTotal = dtLista.Rows[0]["precoTotal"].ToString();
+                        vendas.Pago = Convert.ToInt32(dtLista.Rows[0]["pago"].ToString());
+                        return vendas;
+                    }
+                    return vendas;
+
+
                 }
                 catch (Exception e)
                 {
@@ -472,7 +484,6 @@ namespace ControledeVendas.Services
 
                 }
             }
-
         }
         public static bool AtualizaVendas(Entidades.Vendas vend)
         {
