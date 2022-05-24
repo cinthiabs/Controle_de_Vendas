@@ -161,14 +161,12 @@ namespace ControledeVendas
         }
         protected void Btn_Inserir_Click(object sender, EventArgs e)
         {
-
             try
             {
                 bool valida = ValidaCampos();
                 if (valida == true)
                 {
                     Entidades.Vendas vendas = new Entidades.Vendas();
-                    var TESTE = DropProduto.SelectedItem;
 
                     vendas.Data = Convert.ToDateTime(txtData.Value);
                     vendas.produtoid =Convert.ToInt32(DropProduto.SelectedValue);

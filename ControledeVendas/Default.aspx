@@ -6,7 +6,7 @@
            padding-top: 10px;
            padding-bottom: 30px;
            margin-bottom: 30px;
-           margin-left:40px;
+           margin-left:50px;
        }
  .main{
     /*margin: auto;*/ /*centralizado*/
@@ -69,10 +69,21 @@
  .combo {
       text-align: right;
  }
+ .Mode{
+     display: flex;
+      aling-items: center;
+      justify-content: space-between;
+      left:80%;
+ }
+ .Mode label{
+     padding-top:10px;
+     padding-right:10px;
+ }
 
    </style>
     <div class="row">
-        <div class="form-group col-md-2 col-sm-2 col-xs-2">
+        <div class="form-group col-md-2 col-sm-2 col-xs-2 Mode">
+         <label for="txtFiltro">Filtro:  </label>
          <asp:DropDownList ID="DropRelatorio" runat="server" BackColor="White" class="form-control" AutoPostBack="true" OnSelectedIndexChanged="DropRelatorio_SelectedIndexChanged">
            </asp:DropDownList>
         </div>
