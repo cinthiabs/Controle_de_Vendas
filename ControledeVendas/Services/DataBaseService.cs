@@ -448,7 +448,33 @@ namespace ControledeVendas.Services
                 }
             }
         }
+        public static DataTable ConsultaVenda(string id)
+        {
+            DataTable dtLista = new DataTable();
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                string query = "SELECT  v.id,data,c.Nome, Cliente,Quant,precoTotal,p.descricao FROM Vendas v";
+                query += " inner join Categoria c on v.Produtoid = c.id ";
+                query += " inner join pago p on v.Pago = p.id  where v.id = " + id;
+                //var query = @"select * from vendas where id = " +id;
+                connection.Open();
 
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                    sqlData.Fill(dtLista);
+                    return dtLista;
+
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+
+                }
+            }
+        }
         public static Entidades.Vendas ConsultaVendas(Entidades.Vendas vend)
         {
             Entidades.Vendas vendas = new Entidades.Vendas();

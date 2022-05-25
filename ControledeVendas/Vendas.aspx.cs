@@ -56,18 +56,19 @@ namespace ControledeVendas
         }
         protected void Btn_Consultar_Click(object sender, EventArgs e)
         {
-            bool valida = ValidaCampos();
+            //bool valida = ValidaCampos();
             if (txtid.Value != "")
             {
-                Entidades.Vendas vend = new Entidades.Vendas();
-                vend.id = Convert.ToInt32(txtid.Value);
-
-                var retorno = DataBaseService.ConsultaVendas(vend);
+                var retorno = DataBaseService.ConsultaVenda(txtid.Value);
                 if (retorno != null)
                 {
                     Dados.DataSource = retorno;
                     Dados.DataBind();
                 }
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Informe o codigo da venda!')</script>");
             }
         }
         public void ValoresPagamento()
