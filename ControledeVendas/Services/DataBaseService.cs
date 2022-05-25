@@ -382,7 +382,7 @@ namespace ControledeVendas.Services
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
-                string query = "SELECT top 5 * FROM Produto where data >= getdate()-"+dias+" ORDER BY DATA DESC";
+                string query = "SELECT top 5 id,data,Produto,Quant,FORMAT(precoUnt , 'C') AS 'precoUnt',FORMAT(precoTotal , 'C') AS 'precoTotal' FROM Produto  where data >= getdate()-" + dias+" ORDER BY DATA DESC";
                 connection.Open();
 
                 try
@@ -453,7 +453,7 @@ namespace ControledeVendas.Services
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
-                string query = "SELECT  v.id,data,c.Nome, Cliente,Quant,precoTotal,p.descricao FROM Vendas v";
+                string query = "SELECT  v.id,data,c.Nome, Cliente,Quant,FORMAT(precoTotal , 'C') AS 'precoTotal',p.descricao FROM Vendas v";
                 query += " inner join Categoria c on v.Produtoid = c.id ";
                 query += " inner join pago p on v.Pago = p.id  where v.id = " + id;
                 //var query = @"select * from vendas where id = " +id;
@@ -625,7 +625,7 @@ namespace ControledeVendas.Services
             DataTable dtLista = new DataTable();
             using (SqlConnection connection = new SqlConnection(conn))
             {
-                string query = "SELECT top 5 v.id,data,c.Nome, Cliente,Quant,precoTotal,p.descricao FROM Vendas v";
+                string query = "SELECT top 5 v.id,data,c.Nome, Cliente,Quant,FORMAT(precoTotal , 'C') AS 'precoTotal',p.descricao FROM Vendas v";
                 query += " inner join Categoria c on v.Produtoid = c.id ";
                 query += " inner join pago p on v.Pago = p.id  where data>=getdate()-"+dias+" ORDER BY DATA DESC";
                 connection.Open();

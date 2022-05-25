@@ -71,13 +71,21 @@
  }
  .Mode{
      display: flex;
-      aling-items: center;
+      align-items: center;
       justify-content: space-between;
       left:80%;
  }
  .Mode label{
      padding-top:10px;
      padding-right:10px;
+ }
+ .legenda{
+     font-weight:bold;
+     font-size:15px;
+     color:white;
+     text-align: right;
+     padding-right:10px;
+     background-color:mediumaquamarine;
  }
 
    </style>
@@ -104,21 +112,22 @@
             </div>
              <div class="card cardcolor">
                <h3 id="TotalPend" runat="server"></h3>
-                <p>PENDENCIAS</p>
+                <p>PENDÊNCIAS</p>
             </div>   
         </section>
 
         <div class="Detalhe-Content">
             <div class="cardDetalhe detalhe1">
                 <table class="table table-striped">
+                     <caption class="bg-info legenda">Vendas</caption>
                 <thead>
-                    <tr>
+                    <tr>  
                         <th scope="col" style="width: 9%;" class="bg-info">ID</th>
-                        <th scope="col" style="width: 35%;" class="bg-info">Data</th>
-                        <th scope="col" style="width: 20%;"class="bg-info">Produto</th>
-                        <th scope="col" style="width: 18%;"class="bg-info">Cliente</th>
-                        <th scope="col" style="width: 9%;"class="bg-info">Quantidade</th>
-                        <th scope="col" style="width: 10%;"class="bg-info">Valor</th>
+                        <th scope="col" style="width: 30%;" class="bg-info">Data</th>
+                        <th scope="col" style="width: 18%;"class="bg-info">Produto</th>
+                        <th scope="col" style="width: 10%;"class="bg-info">Cliente</th>
+                        <th scope="col" style="width: 2%;"class="bg-info">Quantidade</th>
+                        <th scope="col" style="width: 25%;"class="bg-info">Valor</th>
                         <th scope="col" style="width: 10%;"class="bg-info">Pago</th>
                     </tr>
                 </thead>
@@ -142,14 +151,15 @@
 
             <div class="cardDetalhe detalhe2">
                  <table class="table table-striped">
+                      <caption class="bg-info legenda">Compras</caption>
                     <thead>
                         <tr>
                             <th scope="col" style="width: 10%;"class="bg-info">ID</th>
                             <th scope="col"style="width: 30%;"class="bg-info">Data</th>
-                            <th scope="col"style="width: 10%;"class="bg-info">Quantidade</th>
-                            <th scope="col"style="width: 32%;"class="bg-info">Produto</th>
-                            <th scope="col"style="width: 10%;"class="bg-info">Unitário</th>
-                            <th scope="col"style="width: 10%;"class="bg-info">Total</th>
+                            <th scope="col"style="width: 8%;"class="bg-info">Quantidade</th>
+                            <th scope="col"style="width: 20%;"class="bg-info">Produto</th>
+                            <th scope="col"style="width: 15%;"class="bg-info">Unitário</th>
+                            <th scope="col"style="width: 15%;"class="bg-info">Total</th>
                         </tr>
                     </thead>
                     <tbody>

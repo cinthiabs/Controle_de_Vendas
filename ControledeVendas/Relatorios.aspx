@@ -39,7 +39,7 @@
         }
     </style>
     <div class="row">
-        <div class="headerFIltro">
+        <div class="headerFIltro bg-info">
             <h5>Filtros</h5>
             <div class="BodyFIltro">
 
