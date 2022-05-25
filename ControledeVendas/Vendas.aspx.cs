@@ -114,12 +114,12 @@ namespace ControledeVendas
             if (retorno != null)
             {
                 txtid.Value = Convert.ToString(retorno.id);
-                DropProduto.SelectedIndex = retorno.produtoid;
+                DropProduto.SelectedValue = Convert.ToString(retorno.produtoid);
                 txtData.Value = retorno.Data.ToString("yyyy-MM-dd");
                 txtQuantidade.Value = retorno.Quant;
                 txtCliente.Value = retorno.Cliente;
                 txtValor.Value = retorno.precoTotal;
-                DropProduto.SelectedIndex = retorno.Pago;
+                DropPago.SelectedValue = Convert.ToString(retorno.Pago);
             }
         }
 
@@ -142,7 +142,37 @@ namespace ControledeVendas
         }
         protected void Btn_Atualizar_Click(object sender, EventArgs e)
         {
+            try
+            {    // campos obrigatorios
+                bool valida = ValidaCampos();
+                if (valida == true)
+                {
+                    Entidades.Vendas vend = new Entidades.Vendas();
+                    vend.id = Convert.ToInt32(txtid.Value);
+                    vend.produtoid =Convert.ToInt32(DropProduto.SelectedValue);
+                    vend.Data = Convert.ToDateTime(txtData.Value);
+                    vend.Quant = txtQuantidade.Value;
+                    vend.Cliente = txtCliente.Value;
+                    vend.precoTotal = txtValor.Value;
+                    vend.Pago = Convert.ToInt32(DropProduto.SelectedValue);
 
+                    var retorno = DataBaseService.AtualizaVendas(vend);
+                    if (retorno == true)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Cadastro atualizado com sucesso!')</script>");
+                        PanelPrincipal.Visible = true;
+                        PanelSegundo.Visible = false;
+                        Btn_Atualizar.Visible = false;
+                        LimpaCampos();
+                        TableConsulta();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "aviso", "<script>alert('Erro: " + ex + "')</script>");
+
+            }
         }
         protected void Btn_Adicionar_Click(object sender, EventArgs e)
         {

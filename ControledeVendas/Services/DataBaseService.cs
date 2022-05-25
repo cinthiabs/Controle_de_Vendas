@@ -351,6 +351,44 @@ namespace ControledeVendas.Services
                 }
             }
         }
+        //public static bool AtualizaVendas(Entidades.Vendas vend)
+        //{
+        //    using (SqlConnection connection = new SqlConnection(conn))
+        //    {
+        //        var precoTotal = vend.precoTotal;
+        //        precoTotal = precoTotal.Replace(',', '.');
+        //        string data = vend.Data.ToString("yyyy-dd-MM");
+        //        string GetData = DateTime.Now.ToString("yyyy-dd-MM");
+
+        //        Entidades.Compras compra = new Entidades.Compras();
+
+        //        var query = @"update vendas set data='" + data + "', produtoid='" + vend.produtoid + "', Quant='" + vend.Quant + "',precoTotal=" + precoTotal + ", pago = " + vend.Pago + " DataAlteracao='" + GetData + "' where id = " + vend.id + ""; connection.Open();
+
+        //        try
+        //        {
+        //            SqlCommand command = new SqlCommand(query, connection);
+
+        //            DataTable dtLista = new DataTable();
+        //            SqlDataAdapter sqlData = new SqlDataAdapter(command);
+        //            sqlData.Fill(dtLista);
+
+        //            if (dtLista.Rows.Count >= 0)
+        //            {
+        //                return true;
+        //            }
+        //            else
+        //            {
+        //                return false;
+
+        //            }
+
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            throw new ArgumentException(e.Message);
+        //        }
+        //    }
+        //}
         public static DataTable ConsultaCompra(string id)
         {
 
