@@ -124,11 +124,11 @@
             transition: .3s
         }
 
-            .nav_link:hover {
-                color: var(--white-color);
-                background-color: #416999;
-                text-decoration: none;
-            }
+        .nav_link:hover {
+            color: var(--white-color);
+            background-color: #416999;
+            text-decoration: none;
+        }
 
         .nav_icon {
             font-size: 1.25rem
@@ -146,14 +146,14 @@
             color: var(--white-color)
         }
 
-            .active::before {
-                content: '';
-                position: absolute;
-                left: 0;
-                width: 2px;
-                height: 32px;
-                background-color: var(--white-color)
-            }
+         .active::before {
+             content: '';
+             position: absolute;
+             left: 0;
+             width: 2px;
+             height: 32px;
+             background-color: var(--white-color)
+         }
 
         .foot {
             z-index: var(--z-fixed);
